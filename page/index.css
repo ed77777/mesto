@@ -1,0 +1,45 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/inter.css);
+
+@import url(../blocks/page/page.css);
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/element/element.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/header/header.css);
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/popup/popup.css);
+
+section,
+header,
+footer
+ {
+  outline: solid 1px red;
+}
+
+
+figure {
+  outline: solid 1px yellow;
+}
+
+div,
+p,
+h1,
+h2,
+h3,
+img,
+nav {
+  outline: solid 1px blue;
+  margin: 0;
+}
+
+div,
+p,
+h1,
+h2,
+h3,
+header,
+footer,
+nav {
+  margin: 0;
+  padding: 0;
+}

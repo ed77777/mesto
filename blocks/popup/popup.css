@@ -1,0 +1,22 @@
+@import url(./__title/popup__title.css);
+@import url(./__closeIcon/popup__closeIcon.css);
+@import url(./__content/popup__content.css);
+@import url(./__input1/popup__input1.css);
+@import url(./__input2/popup__input2.css);
+@import url(./__button-save/popup__button-save.css);
+
+.popup {
+    display: none;
+    /* display: flex; */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+    justify-content: center;
+}
+
+.popup_opened {
+    display: flex;
+}
