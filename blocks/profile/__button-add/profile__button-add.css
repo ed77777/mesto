@@ -7,9 +7,12 @@
    margin-top: 35px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 600px) {
    .profile__button-add {
-       /* all: unset; */
        margin: 36px 0 0;
    }
+}
+
+.profile__button-add:hover {
+   border-color: rgba(255, 255, 255, .6);
 }

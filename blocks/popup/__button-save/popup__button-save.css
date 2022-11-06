@@ -5,10 +5,15 @@
     background-color: black;
     color: white;
     margin: 60px auto 0;
+    border-radius: 2px;
 }
 
 @media screen and (max-width: 320px) {
     .popup__button-save {
         /* max-width: 238px; */
     }
+}
+
+.popup__button-save:hover {
+    background-color: rgba(0, 0, 0, .8);
 }

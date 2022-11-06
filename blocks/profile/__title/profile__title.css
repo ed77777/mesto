@@ -4,12 +4,10 @@
     font-weight: 500;
     display: inline-block;
     margin-top: 22px;
-    /* padding-top: 50px; */
 }
 
 @media screen and (max-width: 320px) {
     .profile__title {
-        font-weight: 500;
         font-size: 27px;
         line-height: 33px;
         text-align: center;
