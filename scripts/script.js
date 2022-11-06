@@ -5,8 +5,6 @@ const profileDescrElem = document.querySelector(".profile__description");
 const popupInputElem1 = document.querySelector(".popup__input1");
 const popupInputElem2 = document.querySelector(".popup__input2");
 
-// alert(1);
-
 buttonPen.addEventListener("click", () => {
   popupElem.classList.add("popup_opened");
   popupInputElem1.value = profileTitleElem.innerText;
@@ -29,5 +27,5 @@ const heartElements = document.querySelectorAll(".element__heart");
 for (let elem of heartElements) {
   elem.addEventListener("click", (event) => {
     event.target.classList.toggle("heart_active");
-  })  
+  });
 }

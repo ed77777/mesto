@@ -1,7 +1,3 @@
-@import url(./__heart/element__heart.css);
-@import url(./__img/element__img.css);
-@import url(./__paragraph/element__paragraph.css);
-
 .element {
     width: 282px;
     height: 361px;
