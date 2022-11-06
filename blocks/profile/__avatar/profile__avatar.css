@@ -1,4 +1,5 @@
 .profile__avatar {
     height: 120px;
-    width: 168px;
+    width: 120px;
+    display: inline;
 }

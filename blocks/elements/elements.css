@@ -1,7 +1,9 @@
 .elements {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
     gap: 17px;
     margin: 46px auto;
     max-width: 880px;
 }
+

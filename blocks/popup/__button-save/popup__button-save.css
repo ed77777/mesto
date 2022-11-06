@@ -1,7 +1,14 @@
-.popup__button-save{
+.popup__button-save {
+    max-width: 358px;
     width: 358px;
     height: 50px;
     background-color: black;
     color: white;
-    margin: 60px;
+    margin: 60px auto 0;
+}
+
+@media screen and (max-width: 320px) {
+    .popup__button-save {
+        /* max-width: 238px; */
+    }
 }

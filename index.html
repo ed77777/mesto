@@ -6,35 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
     <link rel="stylesheet" href="./page/index.css" />
-    <!-- <script src="./scripts/script.js" defer></script> -->
-    <!-- <script src="script.js" defer></script> -->
   </head>
   <body class="page">
     <header class="header">
       <img src="./images/Logo.svg" alt="" class="header__logo" />
       <img src="./images/Line.svg" alt="" class="header__line" />
     </header>
-
     <main>
       <section class="profile">
         <div class="profile__avatar">
           <img
-            src="./images/Jacques Cousteau.png"
+            src="./images/Jacques-Cousteau.png"
             alt=""
             class="profile__image"
           />
         </div>
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <p class="profile__description">Исследователь океана</p>
-
-        <button class="button-plus">
-          <img src="./images/plus.svg" alt="" />
-        </button>
-        <button class="button-pen">
-          <img src="./images/pen.svg" alt="" />
-        </button>
-        <button class="button-heart">
-          <img src="./images/heart.svg" alt="" />
+        <div class="info">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button class="profile__button-edit">
+            <img
+              src="./images/edit.svg"
+              alt=""
+              class="profile__button-edit-img"
+            />
+          </button>
+          <p class="profile__description">Исследователь океана</p>
+        </div>
+        <button class="profile__button-add">
+          <img src="./images/add.svg" alt="" />
         </button>
       </section>
       <section class="elements">
@@ -42,106 +41,100 @@
           <img
             src="./images/kirill-pershin-1088404.png"
             alt="Карачаевск"
-            class="element__element-img"
+            class="element__img"
           />
-          <p class="element__element-paragraph">
-            Карачаевск
+          <div class="element__paragraph-whrapper">
+            <p class="element__paragraph">Карачаевск</p>
             <img
               src="./images/heart.svg"
               alt="Сердечко"
-              class="element__element-heart"
+              class="element__heart"
             />
-          </p>
+          </div>
         </div>
         <div class="element">
           <img
             src="./images/kirill-pershin-1404681.png"
-            alt="Гора Эльбрус"
-            class="element-img"
+            alt="Карачаевск"
+            class="element__img"
           />
-          <p class="element__element-paragraph">
-            Гора Эльбрус
+          <div class="element__paragraph-whrapper">
+            <p class="element__paragraph">Гора Эльбрус</p>
             <img
               src="./images/heart.svg"
               alt="Сердечко"
-              class="element__element-heart"
+              class="element__heart"
             />
-          </p>
+          </div>
+        </div>
+        <div class="element">
+          <img
+            src="./images/kirill-pershin-1556355h.png"
+            alt="Карачаевск"
+            class="element__img"
+          />
+          <div class="element__paragraph-whrapper">
+            <p class="element__paragraph">Домбай</p>
+            <img
+              src="./images/heart.svg"
+              alt="Сердечко"
+              class="element__heart"
+            />
+          </div>
+        </div>
+        <div class="element">
+          <img
+            src="./images/kirill-pershin-1088404.png"
+            alt="Карачаевск"
+            class="element__img"
+          />
+          <div class="element__paragraph-whrapper">
+            <p class="element__paragraph">Гора Эльбрус</p>
+            <img
+              src="./images/heart.svg"
+              alt="Сердечко"
+              class="element__heart"
+            />
+          </div>
         </div>
         <div class="element">
           <img
             src="./images/kirill-pershin-1404681.png"
-            alt="Гора Эльбрус"
-            class="element-img"
+            alt="Карачаевск"
+            class="element__img"
           />
-          <p class="element__element-paragraph">
-            Гора Эльбрус
+          <div class="element__paragraph-whrapper">
+            <p class="element__paragraph">Домбай</p>
             <img
               src="./images/heart.svg"
               alt="Сердечко"
-              class="element__element-heart"
+              class="element__heart"
             />
-          </p>
+          </div>
         </div>
         <div class="element">
           <img
-            src="./images/kirill-pershin-1404681.png"
-            alt="Гора Эльбрус"
-            class="element-img"
+            src="./images/kirill-pershin-1556355h.png"
+            alt="Карачаевск"
+            class="element__img"
           />
-          <p class="element__element-paragraph">
-            Гора Эльбрус
+          <div class="element__paragraph-whrapper">
+            <p class="element__paragraph">Карачаево-Черкесия</p>
             <img
               src="./images/heart.svg"
               alt="Сердечко"
-              class="element__element-heart"
+              class="element__heart"
             />
-          </p>
-        </div>
-        <div class="element">
-          <img
-            src="./images/kirill-pershin-1404681.png"
-            alt="Гора Эльбрус"
-            class="element-img"
-          />
-          <p class="element__element-paragraph">
-            Гора Эльбрус
-            <img
-              src="./images/heart.svg"
-              alt="Сердечко"
-              class="element__element-heart"
-            />
-          </p>
-        </div>
-        <div class="element">
-          <img
-            src="./images/kirill-pershin-1404681.png"
-            alt="Гора Эльбрус"
-            class="element-img"
-          />
-          <p class="element__element-paragraph">
-            Гора Эльбрус
-            <img
-              src="./images/heart.svg"
-              alt="Сердечко"
-              class="element__element-heart"
-            />
-          </p>
+          </div>
         </div>
       </section>
     </main>
-    <footer class="footer">
-      © 2020 Mesto Russia
-    </footer>
+    <footer class="footer">© 2020 Mesto Russia</footer>
     <div class="popup">
-      <!-- <form action="#" class="popup__content"></form> -->
-
       <div class="popup__content">
         <img src="./images/Close-Icon.svg" alt="" class="popup__closeIcon" />
         <h2 class="popup__title">Редактировать профиль</h2>
-        <label for="">
-          <input type="text" class="popup__input1" />
-        </label>
+        <input type="text" class="popup__input1" />
         <input type="text" class="popup__input2" />
         <button class="popup__button-save">Сохранить</button>
       </div>

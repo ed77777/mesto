@@ -1,6 +1,6 @@
-@import url(./__element-paragraph/element__element-paragraph.css);
-@import url(./__element-heart/element__element-heart.css);
-@import url(./__element-img/element__element-img.css);
+@import url(./__heart/element__heart.css);
+@import url(./__img/element__img.css);
+@import url(./__paragraph/element__paragraph.css);
 
 .element {
     width: 282px;
@@ -8,4 +8,11 @@
     background-color: white;
     color: black;
     border-radius: 5px;
+}
+
+@media screen and (max-width: 320px) {
+    .element {
+        width: 282px;
+        height: 361px;
+    }
 }

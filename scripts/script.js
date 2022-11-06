@@ -1,9 +1,11 @@
 const popupElem = document.querySelector(".popup");
-const buttonPen = document.querySelector(".button-pen");
+const buttonPen = document.querySelector(".profile__button-edit");
 const profileTitleElem = document.querySelector(".profile__title");
 const profileDescrElem = document.querySelector(".profile__description");
 const popupInputElem1 = document.querySelector(".popup__input1");
 const popupInputElem2 = document.querySelector(".popup__input2");
+
+// alert(1);
 
 buttonPen.addEventListener("click", () => {
   popupElem.classList.add("popup_opened");
