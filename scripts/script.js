@@ -24,3 +24,10 @@ const buttonCloseIcon = document.querySelector(".popup__closeIcon");
 buttonCloseIcon.addEventListener("click", () => {
   popupElem.classList.remove("popup_opened");
 });
+
+const heartElements = document.querySelectorAll(".element__heart");
+for (let elem of heartElements) {
+  elem.addEventListener("click", (event) => {
+    event.target.classList.toggle("heart_active");
+  })  
+}

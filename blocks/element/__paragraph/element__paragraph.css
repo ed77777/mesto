@@ -1,13 +1,11 @@
 .element__paragraph {
+    all: unset;
     font-size: 24px;
     line-height: 29px;
     font-weight: 900;
     white-space: nowrap;
-    /* Запрещаем перенос строк */
     overflow: hidden;
-    /* Обрезаем все, что не помещается в область */
     text-overflow: ellipsis;
-    /* Добавляем многоточие */
 }
 
 .element__paragraph-whrapper {

@@ -1,3 +1,26 @@
 .element__heart {
-    
+    width: 22px;
+    height: 19px;
+    background-image: url(../../../images/heart.svg);
+    margin-top: 5px;
+    cursor: pointer;
+    position: relative;
 }
+
+.element__heart.heart_active {
+    background-image: url(../../../images/heart-black.svg);
+}
+
+
+.element__heart:hover::before {
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255,  255, .5);
+  }
+
+
