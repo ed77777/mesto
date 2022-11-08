@@ -1,5 +1,14 @@
 .profile__avatar {
-    height: 120px;
-    width: 120px;
-    display: inline;
+    height: 128px;
+    width: 169px;
+    display: inline-block;
+    text-align: center;
+    /* position: relative;
+    left: -28px; */
 }
+
+/* @media screen and (max-width: 600px) {
+    .profile__avatar {
+        position: static;
+    }
+} */

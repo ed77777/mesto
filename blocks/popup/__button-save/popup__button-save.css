@@ -4,13 +4,18 @@
     height: 50px;
     background-color: black;
     color: white;
-    margin: 60px auto 0;
+    margin: 48px auto 0;
     border-radius: 2px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
 }
 
 @media screen and (max-width: 320px) {
     .popup__button-save {
-        /* max-width: 238px; */
+        margin: 45px auto 0;
+        width: 238px;
+        height: 46px;
     }
 }
 
