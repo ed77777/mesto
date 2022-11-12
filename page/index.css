@@ -9,8 +9,8 @@
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/popup/popup.css);
 
+@import url(../blocks/footer/__paragraph/footer__paragraph.css);
 
-@import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__button-add/profile__button-add.css);
 @import url(../blocks/profile/__button-edit/profile__button-edit.css);
 @import url(../blocks/profile/__button-heart/profile__button-heart.css);
@@ -23,14 +23,51 @@
 @import url(../blocks/element/__heart/element__heart.css);
 @import url(../blocks/element/__img/element__img.css);
 @import url(../blocks/element/__paragraph/element__paragraph.css);
+@import url(../blocks/element/__button/element__button.css);
 
 @import url(../blocks/header/__line/header__line.css);
 @import url(../blocks/header/__logo/header__logo.css);
 
 @import url(../blocks/popup/__button-save/popup__button-save.css);
 @import url(../blocks/popup/__closeIcon/popup__closeIcon.css);
-@import url(../blocks/popup/__content/popup__content.css);
-@import url(../blocks/popup/__input1/popup__input1.css);
-@import url(../blocks/popup/__input2/popup__input2.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__input/popup__input.css);
+/* @import url(../blocks/popup/__input2/popup__input2.css); */
 @import url(../blocks/popup/__title/popup__title.css);
-@import url(../blocks/popup/__line/popup__line.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__form/popup__form.css);
+
+section,
+header,
+footer
+ {
+  outline: solid 1px red;
+}
+
+
+figure {
+  outline: solid 1px yellow;
+}
+
+div,
+p,
+h1,
+h2,
+h3,
+img,
+nav {
+  outline: solid 1px blue;
+  margin: 0;
+}
+
+div,
+p,
+h1,
+h2,
+h3,
+header,
+footer,
+nav {
+  margin: 0;
+  padding: 0;
+}

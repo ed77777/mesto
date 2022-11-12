@@ -6,11 +6,5 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.element__paragraph-whrapper {
-    display: flex;
-    justify-content: space-between;
-    max-width: 246px;
-    margin: 25px auto;
+    max-width: 200px;
 }

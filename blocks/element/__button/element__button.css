@@ -1,0 +1,9 @@
+.element__button {
+    display: flex;
+    justify-content: space-between;
+    width: 246px;
+    margin: 22px auto 0 21px;
+    border-style: none;
+    background: none;
+    padding: 0;
+}

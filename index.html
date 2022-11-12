@@ -9,111 +9,113 @@
   </head>
   <body class="page">
     <header class="header">
-      <img src="./images/Logo.svg" alt="" class="header__logo" />
-      <img src="./images/Line.svg" alt="" class="header__line" />
+      <img src="./images/Logo.svg" alt="Логотип шапки" class="header__logo" />
     </header>
     <main>
       <section class="profile">
         <div class="profile__info-whraper">
-          <div class="profile__avatar">
-            <img
-              src="./images/Jacques-Cousteau.png"
-              alt=""
-              class="profile__image"
-            />
-          </div>
+          <img
+            src="./images/Jacques-Cousteau.png"
+            alt=""
+            class="profile__image"
+          />
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__button-edit">
-            </button>
+            <button type="button" class="profile__button-edit"></button>
             <p class="profile__description">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__button-add">
-          <img src="./images/add.svg" alt="" class="profile__button-add-img" />
+        <button type="button" class="profile__button-add">
+          <img
+            src="./images/add.svg"
+            alt="Изображение плюса"
+            class="profile__button-add-img"
+          />
         </button>
       </section>
       <section class="elements">
-        <div class="element">
+        <article class="element">
           <img
             src="./images/kirill-pershin-1088404.png"
             alt="Карачаевск"
             class="element__img"
           />
-          <div class="element__paragraph-whrapper">
-            <p class="element__paragraph">Карачаевск</p>
+          <button type="button" class="element__button">
+            <h2 class="element__paragraph">Карачаевск</h2>
             <div class="element__heart"></div>
-          </div>
-        </div>
-        <div class="element">
+          </button>
+        </article>
+        <article class="element">
           <img
             src="./images/kirill-pershin-1404681.png"
             alt="Карачаевск"
             class="element__img"
           />
-          <div class="element__paragraph-whrapper">
-            <p class="element__paragraph">Гора Эльбрус</p>
+          <button type="button" class="element__button">
+            <h2 class="element__paragraph">Гора Эльбрус</h2>
             <div class="element__heart"></div>
-          </div>
-        </div>
-        <div class="element">
+          </button>
+        </article>
+        <article class="element">
           <img
             src="./images/kirill-pershin-1556355h.png"
             alt="Карачаевск"
             class="element__img"
           />
-          <div class="element__paragraph-whrapper">
-            <p class="element__paragraph">Домбай</p>
+          <button type="button" class="element__button">
+            <h2 class="element__paragraph">Домбай</h2>
             <div class="element__heart"></div>
-          </div>
-        </div>
-        <div class="element">
+          </button>
+        </article>
+        <article class="element">
           <img
             src="./images/kirill-pershin-1088404.png"
             alt="Карачаевск"
             class="element__img"
           />
-          <div class="element__paragraph-whrapper">
-            <p class="element__paragraph">Гора Эльбрус</p>
+          <button type="button" class="element__button">
+            <h2 class="element__paragraph">Гора Эльбрус</h2>
             <div class="element__heart"></div>
-          </div>
-        </div>
-        <div class="element">
+          </button>
+        </article>
+        <article class="element">
           <img
             src="./images/kirill-pershin-1404681.png"
             alt="Карачаевск"
             class="element__img"
           />
-          <div class="element__paragraph-whrapper">
-            <p class="element__paragraph">Домбай</p>
+          <button type="button" class="element__button">
+            <h2 class="element__paragraph">Домбай</h2>
             <div class="element__heart"></div>
-          </div>
-        </div>
-        <div class="element">
+          </button>
+        </article>
+        <article class="element">
           <img
             src="./images/kirill-pershin-1556355h.png"
             alt="Карачаевск"
             class="element__img"
           />
-          <div class="element__paragraph-whrapper">
-            <p class="element__paragraph">Карачаево-Черкесия</p>
+          <button type="button" class="element__button">
+            <h2 class="element__paragraph">Карачаево-Черкесия</h2>
             <div class="element__heart"></div>
-          </div>
-        </div>
+          </button>
+        </article>
       </section>
     </main>
-    <footer class="footer">© 2020 Mesto Russia</footer>
+    <footer class="footer">
+      <p class="footer__paragraph">© 2020 Mesto Russia</p>
+    </footer>
     <div class="popup">
-      <div class="popup__content">
-        <img src="./images/Close-Icon.svg" alt="" class="popup__closeIcon" />
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" class="popup__input1" />
-        <img src="./images/Line-2.svg" alt="" class="popup__line" />
-        <input type="text" class="popup__input2" />
-        <img src="./images/Line-2.svg" alt="" class="popup__line" />
-        <button class="popup__button-save">Сохранить</button>
+      <div class="popup__container">
+        <button type="button" class="popup__closeIcon"></button>
+        <form action="" class="popup__form" name="popup__form">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input name="popup__input1" type="text" class="popup__input popup__input_input_1" />
+          <input name="popup__input2" type="text" class="popup__input popup__input_input_2" />
+          <button type="submit" class="popup__button-save">Сохранить</button>
+        </form>
       </div>
     </div>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

@@ -5,6 +5,7 @@
     margin-top: 5px;
     cursor: pointer;
     position: relative;
+    margin-right: 3px;
 }
 
 .element__heart.heart_active {
