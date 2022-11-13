@@ -17,9 +17,12 @@
         margin: 45px auto 0;
         width: 238px;
         height: 46px;
+        font-size: 14px;
+        line-height: 17px;
     }
 }
 
 .popup__button-save:hover {
-    background-color: rgba(0, 0, 0, .8);
+    /* background-color: rgba(0, 0, 0, .8); */
+    opacity: .8;
 }

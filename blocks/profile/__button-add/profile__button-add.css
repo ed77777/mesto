@@ -9,11 +9,12 @@
 
 @media screen and (max-width: 600px) {
    .profile__button-add {
-       margin: 36px 0 0;
+       margin: 21px 0 0;
        width: 282px;
    }
 }
 
 .profile__button-add:hover {
-   border-color: rgba(255, 255, 255, .6);
+   opacity: .6;
+   cursor: pointer;
 }

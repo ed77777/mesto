@@ -21,6 +21,7 @@
 @import url(../blocks/profile/__info-whraper/profile__info-whraper.css);
 
 @import url(../blocks/element/__heart/element__heart.css);
+@import url(../blocks/element/__heart/_active/element__heart_active.css);
 @import url(../blocks/element/__img/element__img.css);
 @import url(../blocks/element/__paragraph/element__paragraph.css);
 @import url(../blocks/element/__button/element__button.css);
@@ -29,7 +30,7 @@
 @import url(../blocks/header/__logo/header__logo.css);
 
 @import url(../blocks/popup/__button-save/popup__button-save.css);
-@import url(../blocks/popup/__closeIcon/popup__closeIcon.css);
+@import url(../blocks/popup/__close-icon/popup__close-icon.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__input/popup__input.css);
 /* @import url(../blocks/popup/__input2/popup__input2.css); */
@@ -37,7 +38,7 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__form/popup__form.css);
 
-section,
+/* section,
 header,
 footer
  {
@@ -70,4 +71,4 @@ footer,
 nav {
   margin: 0;
   padding: 0;
-}
+} */
