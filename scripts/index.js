@@ -11,7 +11,7 @@ const inputUserNameElem = document.querySelector(
   ".popup-profile__input_input_title"
 );
 const inputDescrElem = document.querySelector(
-  ".profile-popup__input_input_description"
+  ".popup-profile__input_input_description"
 );
 
 const inputCardTitle = document.querySelector(".popup-card__input_input_title");
