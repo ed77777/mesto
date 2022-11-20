@@ -1,0 +1,19 @@
+.popup-card__container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 430px;
+    height: 330px;
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+}
+
+@media screen and (max-width: 600px) {
+    .popup-card__container {
+        max-width: 282px;
+        width: 282px;
+        height: 322px;
+    }
+}

@@ -1,0 +1,26 @@
+.popup-profile__input {
+    width: 358px;
+    height: 14px;
+    margin: 47px auto 0 34px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    border-style: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    padding-bottom: 12px;
+}
+
+.popup-profile__input:last-of-type {
+    margin: 28px auto 0 34px;  
+}
+
+@media screen and (max-width: 600px) {
+    .popup-profile__input {
+        width: 238px;
+        margin: 75px auto 0 20px;
+    }
+
+    .popup-profile__input:last-of-type {
+        margin: 28px auto 0 20px; 
+    }
+}

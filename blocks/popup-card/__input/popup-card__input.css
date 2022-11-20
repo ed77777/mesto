@@ -1,4 +1,4 @@
-.popup__input {
+.popup-card__input {
     width: 358px;
     height: 14px;
     margin: 47px auto 0 34px;
@@ -10,17 +10,17 @@
     padding-bottom: 12px;
 }
 
-.popup__input:last-of-type {
+.popup-card__input:last-of-type {
     margin: 28px auto 0 34px;  
 }
 
 @media screen and (max-width: 600px) {
-    .popup__input {
+    .popup-card__input {
         width: 238px;
         margin: 75px auto 0 20px;
     }
 
-    .popup__input:last-of-type {
+    .popup-card__input:last-of-type {
         margin: 28px auto 0 20px; 
     }
 }
