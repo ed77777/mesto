@@ -59,8 +59,7 @@ function submitpopupForm(evt) {
 function submitpopupCardForm(evt) {
   evt.preventDefault();
   closePopup(evt);
-  // console.log(inputCardTitle.value);
-  addElement(inputCardTitle.value, inputCardDescription.value, "start");
+  addElement(inputCardDescription.value,inputCardTitle.value, "start");
 }
 
 
