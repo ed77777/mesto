@@ -43,7 +43,7 @@ function deleteElement(evt) {
   evt.target.closest(".element").remove();
 }
 
-function OpenFullSizeImage(path, name) {
+function openFullSizeImage(path, name) {
   openPopup(popupImage);
 
   popupImgImage.setAttribute("src", path);
@@ -92,10 +92,12 @@ function createCard(name, path) {
 
   const cardElement = cardTemplate.cloneNode(true);
 
+  const cardElementImage = cardElement.querySelector(".element__img");
+
   // наполняем содержимым
-  cardElement.querySelector(".element__img").src = path;
-  cardElement.querySelector(".element__img").alt = name;
-  cardElement.querySelector(".element__paragraph").textContent = name;
+  cardElementImage.src = path;
+  cardElementImage.alt = name;
+  cardElementImage.textContent = name;
 
   cardElement
     .querySelector(".element__trash-can")
@@ -108,7 +110,7 @@ function createCard(name, path) {
 
   cardElement
     .querySelector(".element__img")
-    .addEventListener("click", () => OpenFullSizeImage(path, name));
+    .addEventListener("click", () => openFullSizeImage(path, name));
 
   return cardElement;
 }
