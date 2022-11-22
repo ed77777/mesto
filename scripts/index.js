@@ -97,7 +97,7 @@ function createCard(name, path) {
   // наполняем содержимым
   cardElementImage.src = path;
   cardElementImage.alt = name;
-  cardElementImage.textContent = name;
+  cardElement.querySelector(".element__paragraph").textContent = name;
 
   cardElement
     .querySelector(".element__trash-can")
