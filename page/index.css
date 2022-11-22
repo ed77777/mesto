@@ -57,7 +57,7 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 
 
-section,
+/* section,
 header,
 footer,
 img
@@ -91,4 +91,4 @@ footer,
 nav {
   margin: 0;
   padding: 0;
-}
+} */
