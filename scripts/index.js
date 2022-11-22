@@ -1,4 +1,3 @@
-const popup = document.querySelector(".popup");
 const popupProfile = document.querySelector(".popup-profile");
 const popupCard = document.querySelector(".popup-card");
 const popupImage = document.querySelector(".popup-image");
@@ -19,8 +18,8 @@ const inputCardDescription = document.querySelector(
   ".popup-card__input_input_description"
 );
 
-const popupFormElem = document.querySelector(".popup-profile__form");
-const popupCardForm = document.querySelector(".popup-card__form");
+const popupProfileForm = document.forms["popup-profile__form"];
+const popupCardForm = document.forms["popup-card__form"];
 
 const popupProfiletitle = document.querySelector(".popup-profile__title");
 const popupProfileImg = document.querySelector(".popup-profile-img");
@@ -37,46 +36,45 @@ const cards = [
 const cardTemplate = document.querySelector("#card").content;
 const elements = document.querySelector(".elements");
 
+const popupImgImage = document.querySelector(".popup-image__image");
+const popupImgDescr = document.querySelector(".popup-image__description");
+
 function deleteElement(evt) {
-  console.log(evt.target.parentNode);
-  evt.target.parentNode.remove();
+  evt.target.closest(".element").remove();
 }
 
-function elementImgOpenFullSize(evt) {
-  // console.log(1);
+function OpenFullSizeImage(path, name) {
   openPopup(popupImage);
-  const popupImg2 = document.querySelector(".popup-image__image");
-  popupImg2.setAttribute("src", evt.target.src);
+
+  popupImgImage.setAttribute("src", path);
+  popupImgImage.setAttribute("alt", name);
+  popupImgDescr.textContent = name;
 }
 
-function submitpopupForm(evt) {
+function submitPopupProfileForm(evt) {
   evt.preventDefault();
-  closePopup(evt);
+  closePopup(popupProfile);
   profileTitleElem.textContent = inputUserNameElem.value;
   profileDescrElem.textContent = inputDescrElem.value;
 }
 
-function submitpopupCardForm(evt) {
+function submitPopupCardForm(evt) {
   evt.preventDefault();
-  closePopup(evt);
-  addElement(inputCardDescription.value,inputCardTitle.value, "start");
+  closePopup(popupCard);
+  addElement(
+    createCard(inputCardTitle.value, inputCardDescription.value),
+    "start"
+  );
+  evt.target.reset();
 }
-
 
 function openPopup(popupElem) {
   popupElem.classList.add("popup_opened");
 }
 
-function closePopup(evt) {
-  let node = evt.target;
-  while (true) {
-    if (node.classList.contains("popup_opened")) {
-      node.classList.remove("popup_opened");
-      break;
-    } else {
-      node = node.parentNode;
-    }
-  }
+function closePopup(popupElem) {
+  // console.log(popupElem);
+  popupElem.classList.remove("popup_opened");
 }
 
 function openPopupCard() {
@@ -89,9 +87,9 @@ function openPopupProfile() {
   openPopup(popupProfile);
 }
 
-function addElement(path, name, pos = "end") {
-  // console.log(path);
+function createCard(name, path) {
   // клонируем содержимое тега template
+
   const cardElement = cardTemplate.cloneNode(true);
 
   // наполняем содержимым
@@ -110,8 +108,12 @@ function addElement(path, name, pos = "end") {
 
   cardElement
     .querySelector(".element__img")
-    .addEventListener("click", elementImgOpenFullSize);
+    .addEventListener("click", () => OpenFullSizeImage(path, name));
 
+  return cardElement;
+}
+
+function addElement(cardElement, pos = "end") {
   // отображаем на странице
   if (pos === "start") {
     elements.prepend(cardElement);
@@ -120,20 +122,21 @@ function addElement(path, name, pos = "end") {
   }
 }
 
-for (let index = 0; index < cards.length; index++) {
-  const element = cards[index];
-  addElement(element.path, element.name);
-}
+cards.forEach((element) => {
+  addElement(createCard(element.name, element.path));
+});
 
 buttonAddElement.addEventListener("click", openPopupCard);
 buttonEdit.addEventListener("click", openPopupProfile);
 
-let closeIcons = document.querySelectorAll(".popup__close-icon");
+const closeButtons = document.querySelectorAll(".popup__close-icon");
 
-for (let closeIcon of closeIcons) {
-  closeIcon.addEventListener("click", closePopup);
-}
+closeButtons.forEach((button) => {
+  // находим 1 раз ближайший к крестику попап
+  const popup = button.closest(".popup");
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener("click", () => closePopup(popup));
+});
 
-popupFormElem.addEventListener("submit", submitpopupForm);
-popupCardForm.addEventListener("submit", submitpopupCardForm);
-
+popupProfileForm.addEventListener("submit", submitPopupProfileForm);
+popupCardForm.addEventListener("submit", submitPopupCardForm);
