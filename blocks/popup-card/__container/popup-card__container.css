@@ -3,7 +3,7 @@
     position: relative;
     flex-direction: column;
     width: 430px;
-    height: 330px;
+    min-height: 330px;
     background-color: white;
     margin: 0 auto;
     border-radius: 10px;

@@ -1,0 +1,8 @@
+.popup-card__input-title-error {
+    color: red;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    width: 358px;
+    margin: 5px auto 0;
+  }

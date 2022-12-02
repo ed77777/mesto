@@ -70,11 +70,43 @@ function submitPopupCardForm(evt) {
 
 function openPopup(popupElem) {
   popupElem.classList.add("popup_opened");
+  addEventListenerEsc(popupElem);
 }
 
 function closePopup(popupElem) {
   // console.log(popupElem);
   popupElem.classList.remove("popup_opened");
+  removeEventListenerEsc(popupElem);
+  clearError(popupElem);
+  popupElem.querySelector(`.popup__form`)?.reset();
+}
+
+function clearError(element) {
+  const ErrorElems = element.querySelectorAll(`.popup__error`);
+  ErrorElems.forEach((ErrorElem) => {
+    ErrorElem.textContent = "";
+  });
+  const ButtonElems = element.querySelectorAll(`.popup__button`);
+  ButtonElems.forEach((ButtonElem) => {
+    ButtonElem.setAttribute("disabled", false);
+    ButtonElem.classList.remove("popup__button_disabled");
+  });
+}
+
+function addEventListenerEsc(popupElem) {
+  document.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      closePopup(popupElem);
+    }
+  });
+}
+
+function removeEventListenerEsc(popupElem) {
+  document.removeEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      closePopup(popupElem);
+    }
+  });
 }
 
 function openPopupCard() {
@@ -137,7 +169,12 @@ closeButtons.forEach((button) => {
   // находим 1 раз ближайший к крестику попап
   const popup = button.closest(".popup");
   // устанавливаем обработчик закрытия на крестик
-  button.addEventListener("click", () => closePopup(popup));
+  // button.addEventListener("click", () => closePopup(popup));
+  popup.addEventListener("mousedown", (evt) => {
+    if (evt.target === button || evt.target === popup) {
+      closePopup(popup);
+    }
+  });
 });
 
 popupProfileForm.addEventListener("submit", submitPopupProfileForm);
