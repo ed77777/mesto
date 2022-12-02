@@ -53,9 +53,9 @@ function openFullSizeImage(path, name) {
 
 function submitPopupProfileForm(evt) {
   evt.preventDefault();
-  closePopup(popupProfile);
   profileTitleElem.textContent = inputUserNameElem.value;
   profileDescrElem.textContent = inputDescrElem.value;
+  closePopup(popupProfile);
 }
 
 function submitPopupCardForm(evt) {

@@ -15,11 +15,13 @@ function enableToggleButtonStateValidation(element, objectValidation, valid) {
   const buttonElem = element.querySelector(
     objectValidation.submitButtonSelector
   );
-  buttonElem.setAttribute("disabled", !valid);
+  // buttonElem.setAttribute("disabled", !valid);
   if (valid) {
     buttonElem.classList.remove(objectValidation.inactiveButtonClass);
+    buttonElem.removeAttribute("disabled");
   } else {
     buttonElem.classList.add(objectValidation.inactiveButtonClass);
+    buttonElem.setAttribute("disabled");
   }
 }
 
