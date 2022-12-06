@@ -60,12 +60,12 @@ function submitPopupProfileForm(evt) {
 
 function submitPopupCardForm(evt) {
   evt.preventDefault();
-  closePopup(popupCard);
   addElement(
     createCard(inputCardTitle.value, inputCardDescription.value),
     "start"
   );
   evt.target.reset();
+  closePopup(popupCard);
 }
 
 function openPopup(popupElem) {

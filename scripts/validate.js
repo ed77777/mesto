@@ -2,36 +2,41 @@ function checkInputValidity(evt, element, objectValidation) {
   const inputErrorElem = element.querySelector(`.${evt.target.name}-error`);
   if (!evt.target.validity.valid) {
     inputErrorElem.textContent = evt.target.validationMessage;
-
-    enableToggleButtonStateValidation(element, objectValidation, false);
   } else {
     inputErrorElem.textContent = "";
-    enableToggleButtonStateValidation(element, objectValidation, true);
   }
-  // console.log(evt);
 }
 
-function enableToggleButtonStateValidation(element, objectValidation, valid) {
-  const buttonElem = element.querySelector(
-    objectValidation.submitButtonSelector
-  );
-  // buttonElem.setAttribute("disabled", !valid);
-  if (valid) {
+function toggleButtonState(formElem, inputList, buttonElem, objectValidation) {
+  if (hasInvalidInput(inputList)) {
+    buttonElem.classList.add(objectValidation.inactiveButtonClass);
+    buttonElem.setAttribute("disabled", true);
+  } else {
     buttonElem.classList.remove(objectValidation.inactiveButtonClass);
     buttonElem.removeAttribute("disabled");
-  } else {
-    buttonElem.classList.add(objectValidation.inactiveButtonClass);
-    buttonElem.setAttribute("disabled");
   }
+}
+
+function hasInvalidInput(inputList) {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
 }
 
 function enableValidation(objectValidation) {
   const formElems = document.querySelectorAll(objectValidation.formSelector);
+  formElems.forEach((formElem) => {
+    formElem.addEventListener("input", function (evt) {
+      checkInputValidity(evt, formElem, objectValidation);
 
-  formElems.forEach((element) => {
-    element.addEventListener("input", function (evt) {
-      checkInputValidity(evt, element, objectValidation);
-      // toggleButtonState(element,objectValidation);
+      const inputList = Array.from(
+        formElem.querySelectorAll(objectValidation.inputSelector)
+      );
+      const buttonElem = formElem.querySelector(
+        objectValidation.submitButtonSelector
+      );
+
+      toggleButtonState(formElem, inputList, buttonElem, objectValidation);
     });
   });
 }
