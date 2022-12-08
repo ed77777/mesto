@@ -1,5 +1,5 @@
-function checkInputValidity(evt, element, objectValidation) {
-  const inputErrorElem = element.querySelector(`.${evt.target.name}-error`);
+function checkInputValidity(evt, form, objectValidation) {
+  const inputErrorElem = form.querySelector(`.${evt.target.name}-error`);
   if (!evt.target.validity.valid) {
     inputErrorElem.textContent = evt.target.validationMessage;
   } else {
@@ -7,13 +7,13 @@ function checkInputValidity(evt, element, objectValidation) {
   }
 }
 
-function toggleButtonState(formElem, inputList, buttonElem, objectValidation) {
+function toggleButtonState(inputList, buttonElem, objectValidation) {
   if (hasInvalidInput(inputList)) {
     buttonElem.classList.add(objectValidation.inactiveButtonClass);
-    buttonElem.setAttribute("disabled", true);
+    buttonElem.disabled=true;
   } else {
     buttonElem.classList.remove(objectValidation.inactiveButtonClass);
-    buttonElem.removeAttribute("disabled");
+    buttonElem.disabled=false;
   }
 }
 
@@ -26,17 +26,17 @@ function hasInvalidInput(inputList) {
 function enableValidation(objectValidation) {
   const formElems = document.querySelectorAll(objectValidation.formSelector);
   formElems.forEach((formElem) => {
+
+    const inputList = Array.from(
+      formElem.querySelectorAll(objectValidation.inputSelector)
+    );
+    const buttonElem = formElem.querySelector(
+      objectValidation.submitButtonSelector
+    );
+
     formElem.addEventListener("input", function (evt) {
       checkInputValidity(evt, formElem, objectValidation);
-
-      const inputList = Array.from(
-        formElem.querySelectorAll(objectValidation.inputSelector)
-      );
-      const buttonElem = formElem.querySelector(
-        objectValidation.submitButtonSelector
-      );
-
-      toggleButtonState(formElem, inputList, buttonElem, objectValidation);
+      toggleButtonState(inputList, buttonElem, objectValidation);
     });
   });
 }

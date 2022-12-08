@@ -24,3 +24,7 @@
         margin: 28px auto 0 20px; 
     }
 }
+
+.popup-profile__input:invalid {
+    border-bottom: solid 1px red;
+}
