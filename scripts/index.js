@@ -50,6 +50,7 @@ function handleProfileFormSubmit(evt) {
   profileDescriptionElem.textContent = inputDescriptionElem.value;
   closePopup(popupProfile);
   clearError(evt.target);
+  popupProfile.reset();
 }
 
 function handleCardFormSubmit(evt) {
@@ -61,17 +62,17 @@ function handleCardFormSubmit(evt) {
   evt.target.reset();
   closePopup(popupCard);
   clearError(evt.target);
+  popupCard.reset();
 }
 
 function openPopup(popupElem) {
   popupElem.classList.add("popup_opened");
-  addEventListenerEsc(popupElem);
+  addEventListenerEsc();
 }
 
 function closePopup(popupElem) {
   popupElem.classList.remove("popup_opened");
-  removeEventListenerEsc(popupElem);
-  popupElem.querySelector(`.popup__form`)?.reset();
+  removeEventListenerEsc();
 }
 
 function clearError(form) {
@@ -79,43 +80,37 @@ function clearError(form) {
   errorElems.forEach((errorElem) => {
     errorElem.textContent = "";
   });
-  const buttonElems = form.querySelectorAll(`.popup__button`);
-  buttonElems.forEach((buttonElem) => {
-    buttonElem.disabled = false;
-    ButtonElem.classList.remove("popup__button_disabled");
-  });
+  const buttonElem = form.querySelector(`.popup__button`);
+  buttonElem.disabled = false;
+  buttonElem.classList.remove("popup__button_disabled");
 }
 
-function handlerEsc(evt) {
+function handleCloseByEsc(evt) {
   if (evt.key === "Escape") {
-    popupElements = document.querySelectorAll(`.popup`);
-    for (let index = 0; index < popupElements.length; index++) {
-      const popupElement = popupElements[index];
-      if (popupElement.classList.contains("popup_opened")) {
-        closePopup(popupElement);
-      }
-    }
+    const popupElement = document.querySelector(`.popup_opened`);
+    closePopup(popupElement);
   }
 }
 
-function addEventListenerEsc(popupElem) {
-  document.addEventListener("keydown", handlerEsc);
+function addEventListenerEsc() {
+  document.addEventListener("keydown", handleCloseByEsc);
 }
 
-function removeEventListenerEsc(popupElem) {
-  document.removeEventListener("keydown", handlerEsc);
+function removeEventListenerEsc() {
+  document.removeEventListener("keydown", handleCloseByEsc);
 }
 
 function openPopupCard() {
   openPopup(popupCard);
   buttonCardSubmit.disabled = true;
+  buttonCardSubmit.classList.add('popup__button_disabled');
 }
 
 function openPopupProfile() {
   inputUserNameElem.value = profileTitleElem.innerText;
   inputDescriptionElem.value = profileDescriptionElem.innerText;
   openPopup(popupProfile);
-  buttonProfileSubmit.disabled = true;
+  clearError(popupProfile);
 }
 
 function createCard(name, path) {

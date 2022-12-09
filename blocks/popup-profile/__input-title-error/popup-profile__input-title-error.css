@@ -5,6 +5,8 @@
     line-height: 15px;
     width: 358px;
     margin: 5px auto 0;
-    min-height: 30px;
-    display: block;
+    /* min-height: 30px; */
+    position: absolute;
+    left: 36px;
+    top: 143px;
   }

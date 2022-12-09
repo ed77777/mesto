@@ -11,7 +11,7 @@
 }
 
 .popup-profile__input:last-of-type {
-    margin: 28px auto 0 34px;  
+    margin: 30px auto 0 34px;  
 }
 
 @media screen and (max-width: 600px) {
@@ -21,10 +21,11 @@
     }
 
     .popup-profile__input:last-of-type {
-        margin: 28px auto 0 20px; 
+        margin: 30px auto 0 20px; 
     }
 }
 
 .popup-profile__input:invalid {
+    outline: none;
     border-bottom: solid 1px red;
 }
