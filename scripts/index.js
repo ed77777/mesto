@@ -2,9 +2,6 @@ const popupProfile = document.querySelector(".popup-profile");
 const popupCard = document.querySelector(".popup-card");
 const popupImage = document.querySelector(".popup-image");
 
-const buttonProfileSubmit = document.querySelector(
-  ".popup-profile__button-save"
-);
 const buttonCardSubmit = document.querySelector(".popup-card__button-save");
 
 const buttonEdit = document.querySelector(".profile__button-edit");
@@ -50,7 +47,6 @@ function handleProfileFormSubmit(evt) {
   profileDescriptionElem.textContent = inputDescriptionElem.value;
   closePopup(popupProfile);
   clearError(evt.target);
-  popupProfile.reset();
 }
 
 function handleCardFormSubmit(evt) {
@@ -62,7 +58,6 @@ function handleCardFormSubmit(evt) {
   evt.target.reset();
   closePopup(popupCard);
   clearError(evt.target);
-  popupCard.reset();
 }
 
 function openPopup(popupElem) {

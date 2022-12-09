@@ -2,8 +2,10 @@ function checkInputValidity(evt, form, objectValidation) {
   const inputErrorElem = form.querySelector(`.${evt.target.name}-error`);
   if (!evt.target.validity.valid) {
     inputErrorElem.textContent = evt.target.validationMessage;
+    evt.target.classList.add(objectValidation.inputErrorClass);
   } else {
     inputErrorElem.textContent = "";
+    evt.target.classList.remove(objectValidation.inputErrorClass);
   }
 }
 
