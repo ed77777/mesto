@@ -1,6 +1,5 @@
 const popupProfile = document.querySelector(".popup-profile");
 const popupCard = document.querySelector(".popup-card");
-const popupImage = document.querySelector(".popup-image");
 
 const buttonCardSubmit = document.querySelector(".popup-card__button-save");
 
@@ -23,23 +22,7 @@ const inputCardDescription = document.querySelector(
 const popupProfileForm = document.forms["popup-profile__form"];
 const popupCardForm = document.forms["popup-card__form"];
 
-const cardTemplate = document.querySelector("#card").content;
 const cardsContainer = document.querySelector(".elements");
-
-const popupImgImage = document.querySelector(".popup-image__image");
-const popupImgDescription = document.querySelector(".popup-image__description");
-
-function handleCardDelete(evt) {
-  evt.target.closest(".element").remove();
-}
-
-function openFullSizeImage(path, name) {
-  openPopup(popupImage);
-
-  popupImgImage.src = path;
-  popupImgImage.alt = name;
-  popupImgDescription.textContent = name;
-}
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -98,7 +81,7 @@ function removeEventListenerEsc() {
 function openPopupCard() {
   openPopup(popupCard);
   buttonCardSubmit.disabled = true;
-  buttonCardSubmit.classList.add('popup__button_disabled');
+  buttonCardSubmit.classList.add("popup__button_disabled");
 }
 
 function openPopupProfile() {
@@ -106,38 +89,6 @@ function openPopupProfile() {
   inputDescriptionElem.value = profileDescriptionElem.innerText;
   openPopup(popupProfile);
   clearError(popupProfile);
-}
-
-function createCard(name, path) {
-  // клонируем содержимое тега template
-
-  const cardElement = cardTemplate.cloneNode(true);
-
-  const cardElementImage = cardElement.querySelector(".element__img");
-
-  // наполняем содержимым
-  cardElementImage.src = path;
-  cardElementImage.alt = name;
-  cardElement.querySelector(".element__paragraph").textContent = name;
-
-  cardElement
-    .querySelector(".element__trash-can")
-    .addEventListener("click", handleCardDelete);
-  //   .addEventListener("click", () => {
-  //     cardElement.remove();
-  // });  //попытка сделать через замыкание, чет не заработало
-
-  cardElement
-    .querySelector(".element__heart")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("element__heart_active");
-    });
-
-  cardElement
-    .querySelector(".element__img")
-    .addEventListener("click", () => openFullSizeImage(path, name));
-
-  return cardElement;
 }
 
 function addCard(cardElement, pos = "end") {
@@ -149,8 +100,11 @@ function addCard(cardElement, pos = "end") {
   }
 }
 
+import { cards } from "./date.js";
+import { Card } from "./card.js";
+
 cards.forEach((element) => {
-  addCard(createCard(element.name, element.path));
+  addCard(new Card(element.name, element.path, "#card").createCard());
 });
 
 buttonAddElement.addEventListener("click", openPopupCard);
@@ -172,3 +126,11 @@ closeButtons.forEach((button) => {
 
 popupProfileForm.addEventListener("submit", handleProfileFormSubmit);
 popupCardForm.addEventListener("submit", handleCardFormSubmit);
+
+import { FormValidator, objectValidation } from "./FormValidator.js";
+
+const formElems = document.querySelectorAll(objectValidation.formSelector);
+formElems.forEach((formElem) => {   
+  const FormValidatorObject = new FormValidator(objectValidation,formElem);
+  FormValidatorObject.enableValidation();
+});
