@@ -1,3 +1,6 @@
+import { cards } from "./date.js";
+import { Card } from "./Card.js";
+
 const popupProfile = document.querySelector(".popup-profile");
 const popupCard = document.querySelector(".popup-card");
 
@@ -43,7 +46,7 @@ function handleCardFormSubmit(evt) {
   clearError(evt.target);
 }
 
-function openPopup(popupElem) {
+export function openPopup(popupElem) {
   popupElem.classList.add("popup_opened");
   addEventListenerEsc();
 }
@@ -51,16 +54,6 @@ function openPopup(popupElem) {
 function closePopup(popupElem) {
   popupElem.classList.remove("popup_opened");
   removeEventListenerEsc();
-}
-
-function clearError(form) {
-  const errorElems = form.querySelectorAll(`.popup__error`);
-  errorElems.forEach((errorElem) => {
-    errorElem.textContent = "";
-  });
-  const buttonElem = form.querySelector(`.popup__button`);
-  buttonElem.disabled = false;
-  buttonElem.classList.remove("popup__button_disabled");
 }
 
 function handleCloseByEsc(evt) {
@@ -80,15 +73,18 @@ function removeEventListenerEsc() {
 
 function openPopupCard() {
   openPopup(popupCard);
-  buttonCardSubmit.disabled = true;
-  buttonCardSubmit.classList.add("popup__button_disabled");
+  forms.forEach((form) => {
+    form.resetValidation();
+  });
 }
 
 function openPopupProfile() {
   inputUserNameElem.value = profileTitleElem.innerText;
   inputDescriptionElem.value = profileDescriptionElem.innerText;
   openPopup(popupProfile);
-  clearError(popupProfile);
+  forms.forEach((form) => {
+    form.resetValidation();
+  });
 }
 
 function addCard(cardElement, pos = "end") {
@@ -100,9 +96,6 @@ function addCard(cardElement, pos = "end") {
   }
 }
 
-import { cards } from "./date.js";
-import { Card } from "./card.js";
-
 cards.forEach((element) => {
   addCard(new Card(element.name, element.path, "#card").createCard());
 });
@@ -110,9 +103,9 @@ cards.forEach((element) => {
 buttonAddElement.addEventListener("click", openPopupCard);
 buttonEdit.addEventListener("click", openPopupProfile);
 
-const closeButtons = document.querySelectorAll(".popup__close-icon");
+const buttonsClose = document.querySelectorAll(".popup__close-icon");
 
-closeButtons.forEach((button) => {
+buttonsClose.forEach((button) => {
   // находим 1 раз ближайший к крестику попап
   const popup = button.closest(".popup");
   // устанавливаем обработчик закрытия на крестик
@@ -129,8 +122,11 @@ popupCardForm.addEventListener("submit", handleCardFormSubmit);
 
 import { FormValidator, objectValidation } from "./FormValidator.js";
 
+const forms = [];
 const formElems = document.querySelectorAll(objectValidation.formSelector);
-formElems.forEach((formElem) => {   
-  const FormValidatorObject = new FormValidator(objectValidation,formElem);
+formElems.forEach((formElem) => {
+  const FormValidatorObject = new FormValidator(objectValidation, formElem);
   FormValidatorObject.enableValidation();
+  FormValidatorObject.resetValidation();
+  forms.push(FormValidatorObject);
 });

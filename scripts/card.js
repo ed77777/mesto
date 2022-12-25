@@ -1,3 +1,5 @@
+import { openPopup } from "./index.js";
+
 const popupImage = document.querySelector(".popup-image");
 const popupImgImage = document.querySelector(".popup-image__image");
 const popupImgDescription = document.querySelector(".popup-image__description");
@@ -10,54 +12,56 @@ export class Card {
   }
 
   _getTemplate() {
-    return document.querySelector(this.classSelector).content.cloneNode(true);
+    // return document.querySelector(this.classSelector).content.cloneNode(true);
+    return document.querySelector(this.classSelector).content.querySelector('.element').cloneNode(true);
   }
 
-  _handleCardDelete(evt) {
-    evt.target.closest(".element").remove();
+  _handleCardDelete() {
+    this._element.remove();
   }
 
   _handleOpenPopup() {
-    // console.log(1);
     popupImgImage.src = this.path;
     popupImgImage.alt = this.name;
     popupImgDescription.textContent = this.name;
+    openPopup(popupImage);
+  }
 
-    popupImage.src = this._image;
-    popupImage.classList.add("popup_opened");
+  _handleClickHeart() {
+    this._buttonLike.classList.toggle("element__heart_active");
   }
 
   _setEventListeners() {
-    const cardElementImage = this._element.querySelector(".element__img");
-    cardElementImage.addEventListener('click', () => {
+    this._cardImage.addEventListener("click", () => {
       this._handleOpenPopup();
     });
 
     this._element
-    .querySelector(".element__trash-can")
-    .addEventListener("click", this._handleCardDelete);
-  //   .addEventListener("click", () => {
-  //     cardElement.remove();
-  // });  //попытка сделать через замыкание, не заработало, попробую сделать позже
+      .querySelector(".element__trash-can")
+      .addEventListener("click", () => {
+        this._handleCardDelete();
+      });
 
-  this._element
-    .querySelector(".element__heart")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("element__heart_active");
+
+    this._buttonLike.addEventListener("click", () => {
+      this._handleClickHeart();
     });
   }
 
   createCard() {
     // клонируем содержимое тега template
     this._element = this._getTemplate();
+    this._buttonLike = this._element.querySelector(".element__heart");
     // this._setEventListeners();
-    
+
+    this._cardImage = this._element.querySelector(".element__img");
+
     this._setEventListeners();
 
     // наполняем содержимым
-    const cardElementImage = this._element.querySelector(".element__img");
-    cardElementImage.src = this.path;
-    cardElementImage.alt = this.name;
+    
+    this._cardImage.src = this.path;
+    this._cardImage.alt = this.name;
     this._element.querySelector(".element__paragraph").textContent = this.name;
 
     return this._element;
