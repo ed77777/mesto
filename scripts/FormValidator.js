@@ -8,16 +8,12 @@ export class FormValidator {
     this.inputList = Array.from(
       formElem.querySelectorAll(objectValidation.inputSelector)
     );
+    this.errorList = Array.from(
+      formElem.querySelectorAll(`.popup__error`)
+    );
   }
 
   enableValidation() {
-    // const inputList = Array.from(
-    //   this.formElem.querySelectorAll(this.objectValidation.inputSelector)
-    // );
-    // const buttonElem = this.formElem.querySelector(
-    //   this.objectValidation.submitButtonSelector
-    // );
-
     this.formElem.addEventListener("input", (evt) => {
       this._checkInputValidity(evt);
       this._toggleButtonState();
@@ -26,14 +22,12 @@ export class FormValidator {
 
   resetValidation() {
     this._toggleButtonState();
-    this.inputList.forEach((input) => {
-      this._hideInputError(input);
-    });
+    this._hideInputError();
   }
 
   _hideInputError() {
-    const errorElems = this.formElem.querySelectorAll(`.popup__error`);
-    errorElems.forEach((errorElem) => {
+    // const errorElems = this.formElem.querySelectorAll(`.popup__error`);
+    this.errorList.forEach((errorElem) => {
       errorElem.textContent = "";
     });
   }

@@ -73,18 +73,14 @@ function removeEventListenerEsc() {
 
 function openPopupCard() {
   openPopup(popupCard);
-  forms.forEach((form) => {
-    form.resetValidation();
-  });
+  mapForms.get("2").resetValidation();
 }
 
 function openPopupProfile() {
   inputUserNameElem.value = profileTitleElem.innerText;
   inputDescriptionElem.value = profileDescriptionElem.innerText;
   openPopup(popupProfile);
-  forms.forEach((form) => {
-    form.resetValidation();
-  });
+  mapForms.get("1").resetValidation();
 }
 
 function addCard(cardElement, pos = "end") {
@@ -122,11 +118,17 @@ popupCardForm.addEventListener("submit", handleCardFormSubmit);
 
 import { FormValidator, objectValidation } from "./FormValidator.js";
 
-const forms = [];
+const mapForms = new Map();
+
 const formElems = document.querySelectorAll(objectValidation.formSelector);
 formElems.forEach((formElem) => {
   const FormValidatorObject = new FormValidator(objectValidation, formElem);
   FormValidatorObject.enableValidation();
   FormValidatorObject.resetValidation();
-  forms.push(FormValidatorObject);
+  if (formElem.name=="popup-profile__form") {
+    mapForms.set("1", FormValidatorObject); 
+  }
+  if (formElem.name=="popup-card__form") {
+    mapForms.set("2", FormValidatorObject);
+  }
 });
