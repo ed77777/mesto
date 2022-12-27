@@ -9,3 +9,11 @@
     left: 36px;
     top: 200px;
   }
+
+  @media screen and (max-width: 600px) {
+    .popup-card__input-description-error {
+      width: 238px;
+      left: 22px;
+      top: 205px;
+    }
+  }

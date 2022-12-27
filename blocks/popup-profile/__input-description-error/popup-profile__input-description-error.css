@@ -11,3 +11,11 @@
     left: 36px;
     top: 200px;
   }
+
+  @media screen and (max-width: 600px) {
+    .popup-profile__input-description-error {
+      width: 238px;
+      left: 22px;
+      top: 185px;
+    }
+  }

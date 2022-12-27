@@ -1,4 +1,4 @@
-// import { openPopup } from "./index.js";
+import { openPopup } from "./index.js";
 
 const popupImage = document.querySelector(".popup-image");
 const popupImgImage = document.querySelector(".popup-image__image");
@@ -24,7 +24,7 @@ export class Card {
     popupImgImage.src = this.path;
     popupImgImage.alt = this.name;
     popupImgDescription.textContent = this.name;
-    // openPopup(popupImage);
+    openPopup(popupImage);
   }
 
   _handleClickHeart() {

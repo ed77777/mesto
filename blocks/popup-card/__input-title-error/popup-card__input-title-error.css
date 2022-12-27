@@ -1,11 +1,19 @@
 .popup-card__input-title-error {
-    color: red;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-    width: 358px;
-    margin: 2px auto 0;
-    position: absolute;
-    left: 36px;
-    top: 143px;
+  color: red;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  width: 358px;
+  margin: 2px auto 0;
+  position: absolute;
+  left: 36px;
+  top: 143px;
+}
+
+@media screen and (max-width: 600px) {
+  .popup-card__input-title-error {
+    width: 238px;
+    left: 22px;
+    top: 150px;
   }
+}

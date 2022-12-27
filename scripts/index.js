@@ -38,7 +38,7 @@ function handleProfileFormSubmit(evt) {
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
   addCard(
-    createCard(inputCardTitle.value, inputCardDescription.value),
+    new Card(inputCardTitle.value, inputCardDescription.value, "#card").createCard(),
     "start"
   );
   evt.target.reset();
