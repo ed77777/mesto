@@ -22,10 +22,10 @@ export class FormValidator {
 
   resetValidation() {
     this._toggleButtonState();
-    this._hideInputError();
+    this._hideInputErrors();
   }
 
-  _hideInputError() {
+  _hideInputErrors() {
     // const errorElems = this.formElem.querySelectorAll(`.popup__error`);
     this.errorList.forEach((errorElem) => {
       errorElem.textContent = "";
