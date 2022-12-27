@@ -73,14 +73,14 @@ function removeEventListenerEsc() {
 
 function openPopupCard() {
   openPopup(popupCard);
-  mapForms.get("2").resetValidation();
+  mapForms.get("popupCard").resetValidation();
 }
 
 function openPopupProfile() {
   inputUserNameElem.value = profileTitleElem.innerText;
   inputDescriptionElem.value = profileDescriptionElem.innerText;
   openPopup(popupProfile);
-  mapForms.get("1").resetValidation();
+  mapForms.get("popupProfile").resetValidation();
 }
 
 function addCard(cardElement, pos = "end") {
@@ -126,9 +126,9 @@ formElems.forEach((formElem) => {
   FormValidatorObject.enableValidation();
   FormValidatorObject.resetValidation();
   if (formElem.name=="popup-profile__form") {
-    mapForms.set("1", FormValidatorObject); 
+    mapForms.set("popupProfile", FormValidatorObject); 
   }
   if (formElem.name=="popup-card__form") {
-    mapForms.set("2", FormValidatorObject);
+    mapForms.set("popupCard", FormValidatorObject);
   }
 });
