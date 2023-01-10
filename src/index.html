@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./page/index.css" />
+    <!-- <link rel="stylesheet" href="./page/index.css" /> -->
   </head>
   <body class="page">
     <header class="header">
-      <img src="./images/Logo.svg" alt="Логотип шапки" class="header__logo" />
+      <img src="<%=require('./images/Logo.svg')%>" alt="Логотип шапки" class="header__logo" />
     </header>
     <main>
       <section class="profile">
         <div class="profile__info-whraper">
           <img
-            src="./images/Jacques-Cousteau.png"
+            src="<%=require('./images/Jacques-Cousteau.png')%>"
             alt="Жак Ив Кусто"
             class="profile__image"
           />
@@ -27,7 +27,8 @@
         </div>
         <button type="button" class="profile__button-add">
           <img
-            src="./images/add.svg"
+            
+            src="<%=require('./images/add.svg')%>"
             alt="Добавить карточку"
             class="profile__button-add-img"
           />
@@ -37,7 +38,8 @@
         <template id="card">
           <article class="element">
             <img
-              src="./images/trashCan.svg"
+              
+              src="<%=require('./images/trashCan.svg')%>"
               alt="Корзина"
               class="element__trash-can"
             />
@@ -141,7 +143,7 @@
         <p class="popup-image__description">sadsadsad</p>
       </div>
     </div>
-    <script src="./scripts/index.js" type="module"></script>
+    <!-- <script src="./scripts/index.js" type="module"></script> -->
     <!-- <script src="./scripts/FormValidator.js" type="module"></script> -->
   </body>
 </html>

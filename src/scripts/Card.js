@@ -1,14 +1,15 @@
-import { openPopup } from "./index.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 const popupImage = document.querySelector(".popup-image");
 const popupImgImage = document.querySelector(".popup-image__image");
 const popupImgDescription = document.querySelector(".popup-image__description");
 
 export class Card {
-  constructor(name, path, classSelector) {
+  constructor(name, path, classSelector, handleCardClick) {
     this.name = name;
     this.path = path;
     this.classSelector = classSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -20,12 +21,9 @@ export class Card {
     this._element.remove();
   }
 
-  _handleOpenPopup() {
-    popupImgImage.src = this.path;
-    popupImgImage.alt = this.name;
-    popupImgDescription.textContent = this.name;
-    openPopup(popupImage);
-  }
+  // _handleOpenPopup() {
+    // new PopupWithImage(this.path,this.name,'.popup-image').open();
+  // }
 
   _handleClickHeart() {
     this._buttonLike.classList.toggle("element__heart_active");
@@ -33,7 +31,7 @@ export class Card {
 
   _setEventListeners() {
     this._cardImage.addEventListener("click", () => {
-      this._handleOpenPopup();
+      this._handleCardClick()
     });
 
     this._element
