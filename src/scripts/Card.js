@@ -13,7 +13,6 @@ export class Card {
   }
 
   _getTemplate() {
-    // return document.querySelector(this.classSelector).content.cloneNode(true);
     return document.querySelector(this.classSelector).content.querySelector('.element').cloneNode(true);
   }
 
@@ -21,9 +20,6 @@ export class Card {
     this._element.remove();
   }
 
-  // _handleOpenPopup() {
-    // new PopupWithImage(this.path,this.name,'.popup-image').open();
-  // }
 
   _handleClickHeart() {
     this._buttonLike.classList.toggle("element__heart_active");
