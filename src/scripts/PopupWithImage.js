@@ -1,8 +1,15 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithImage extends Popup {
-  constructor(path, name, classSelector) {
+  constructor(classSelector) {
     super(classSelector);
+    this.popupImgImage = document.querySelector(".popup-image__image");
+    this.popupImgDescription = document.querySelector(
+      ".popup-image__description"
+    );
+  }
+
+  setDate(path, name) {
     this.path = path;
     this.name = name;
   }
@@ -10,14 +17,9 @@ export default class PopupWithImage extends Popup {
   open() {
     super.open();
 
-    const popupImage = document.querySelector(".popup-image");
-    const popupImgImage = document.querySelector(".popup-image__image");
-    const popupImgDescription = document.querySelector(
-      ".popup-image__description"
-    );
-
-    popupImgImage.src = this.path;
-    popupImgImage.alt = this.name;
+    // const popupImage = document.querySelector(".popup-image");
+    this.popupImgImage.src = this.path;
+    this.popupImgImage.alt = this.name;
     popupImgDescription.textContent = this.name;
   }
 }

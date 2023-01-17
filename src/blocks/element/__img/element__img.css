@@ -1,7 +1,12 @@
 .element__img {
     object-fit: cover;
-    /* overflow: ; */
     width: 282px;
     height: 282px;
     cursor: pointer;
 }
+
+.element__img:before {  
+    content: "Мы сожалеем, но эта картинка «битая» :(";
+    display: block;
+    height: 260px;
+  }

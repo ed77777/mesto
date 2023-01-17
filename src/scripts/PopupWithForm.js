@@ -1,31 +1,24 @@
 import Popup from "./Popup.js";
-import {
-  profileTitleElem,
-  profileDescriptionElem,
-  inputUserNameElem,
-  inputDescriptionElem,
-} from "./index.js";
+import { inputUserNameElem, inputDescriptionElem } from "./globalМariables.js";
 
 export default class PopupWithForm extends Popup {
-  constructor(title, description, classSelector, formName, handleFormSubmit) {
-    super(classSelector, formName);
-    this.title = title;
-    this.description = description;
-    inputUserNameElem.value = title;
-    inputDescriptionElem.value = description;
+  constructor(classSelector, formName, handleFormSubmit) {
+    super(classSelector);
+    this._formName = formName;
     this._handleFormSubmit = handleFormSubmit;
   }
 
-  open() {
-    super.open();
+  setInputValues(title, description) {
+    inputUserNameElem.value = title;
+    inputDescriptionElem.value = description;
   }
 
-  handleProfileFormSubmit(evt) {
-    evt.preventDefault();
-    profileTitleElem.textContent = inputUserNameElem.value;
-    profileDescriptionElem.textContent = inputDescriptionElem.value;
-    // clearError(evt.target);
-    super.close();
+  getInputValues() {
+    const answer = new Map();
+    answer.set("UserName", inputUserNameElem.value);
+    answer.set("Description", inputDescriptionElem.value);
+    // return new Map() {inputUserNameElem.value,inputDescriptionElem.value}
+    return answer;
   }
 
   setEventListeners() {

@@ -6,72 +6,54 @@ import { Card } from "./Card.js";
 import PopupWithForm from "./PopupWithForm.js";
 import PopupWithImage from "./PopupWithImage.js";
 import { FormValidator, objectValidation } from "./FormValidator.js";
+import UserInfo from "./UserInfo";
 
-const buttonEdit = document.querySelector(".profile__button-edit");
-const buttonAddElement = document.querySelector(".profile__button-add");
-export const profileTitleElem = document.querySelector(".profile__title");
-export const profileDescriptionElem = document.querySelector(
-  ".profile__description"
-);
-export const inputUserNameElem = document.querySelector(
-  ".popup-profile__input_input_title"
-);
-export const inputDescriptionElem = document.querySelector(
-  ".popup-profile__input_input_description"
-);
+import {
+  buttonEdit,
+  buttonAddElement,
+  inputCardTitle,
+  inputCardDescription,
+} from "./globalМariables.js";
 
-const inputCardTitle = document.querySelector(".popup-card__input_input_title");
-const inputCardDescription = document.querySelector(
-  ".popup-card__input_input_description"
+const popupProfile = new PopupWithForm(
+  ".popup-profile",
+  "popup-profile__form",
+  handleProfileFormSubmit
 );
 
-function openPopupCard() {
-  new PopupWithForm(
-    "",
-    "",
-    ".popup-card",
-    "popup-card__form",
-    handleCardFormSubmit
-  ).open();
-  mapForms.get("popupCard").resetValidation();
-}
+const popupNewCard = new PopupWithForm(
+  ".popup-card",
+  "popup-card__form",
+  handleCardFormSubmit
+);
+
+const popupImage = new PopupWithImage(".popup-image");
 
 function openPopupProfile() {
-  new PopupWithForm(
-    profileTitleElem.innerText,
-    profileDescriptionElem.innerText,
-    ".popup-profile",
-    "popup-profile__form",
-    handleProfileFormSubmit
-  ).open();
+  const userinfo2 = userInfo.getUserInfo();
+  popupProfile.setInputValues(userinfo2.name, userinfo2.info);
+  popupProfile.open();
   mapForms.get("popupProfile").resetValidation();
+}
+
+function openPopupCard() {
+  popupNewCard.open();
+  mapForms.get("popupCard").resetValidation();
 }
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  profileTitleElem.textContent = inputUserNameElem.value;
-  profileDescriptionElem.textContent = inputDescriptionElem.value;
+  const answer = popupProfile.getInputValues();
+  userInfo.setUserInfo(answer.get("UserName"), answer.get("Description"));
   // clearError(evt.target);
   this.close();
 }
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  new Section(
-    {
-      data: [{ path: inputCardTitle.value, name: inputCardDescription.value }],
-      renderer: (item) => {
-        const cardElement = new Card(
-          item.path,
-          item.name,
-          "#card",
-          handleCardClick
-        ).createCard();
-        defaultCardList.addItem(cardElement);
-      },
-    },
-    ".elements"
-  ).renderItems();
+  section._renderer(
+    createCard({ path: inputCardTitle.value, name: inputCardDescription.value })
+  );
   this.close();
 }
 
@@ -107,23 +89,38 @@ formElems.forEach((formElem) => {
 });
 
 function handleCardClick() {
-  new PopupWithImage(this.path, this.name, ".popup-image").open();
+  // new PopupWithImage(this.path, this.name, ".popup-image").open();
+  popupImage.setDate(this.path, this.name);
+  popupImage.open();
 }
 
-const defaultCardList = new Section(
+function createCard(item) {
+  return new Card(item.name, item.path, "#card", handleCardClick).createCard();
+}
+
+// const defaultCardList = new Section(
+//   {
+//     data: cards,
+//     renderer: (item) => {
+//       defaultCardList.addItem(createCard(item));
+//     },
+//   },
+//   ".elements"
+// );
+
+const section = new Section(
   {
     data: cards,
     renderer: (item) => {
-      const cardElement = new Card(
-        item.name,
-        item.path,
-        "#card",
-        handleCardClick
-      ).createCard();
-      defaultCardList.addItem(cardElement);
+      section.addItem(createCard(item));
     },
   },
   ".elements"
 );
 
-defaultCardList.renderItems();
+section.renderItems();
+
+const userInfo = new UserInfo({
+  classSelectorName: ".profile__title",
+  classSelectorInfo: ".profile__description",
+});

@@ -1,9 +1,3 @@
-import PopupWithImage from "./PopupWithImage.js";
-
-const popupImage = document.querySelector(".popup-image");
-const popupImgImage = document.querySelector(".popup-image__image");
-const popupImgDescription = document.querySelector(".popup-image__description");
-
 export class Card {
   constructor(name, path, classSelector, handleCardClick) {
     this.name = name;
@@ -13,13 +7,16 @@ export class Card {
   }
 
   _getTemplate() {
-    return document.querySelector(this.classSelector).content.querySelector('.element').cloneNode(true);
+    return document
+      .querySelector(this.classSelector)
+      .content.querySelector(".element")
+      .cloneNode(true);
   }
 
   _handleCardDelete() {
     this._element.remove();
+    this._element = null;
   }
-
 
   _handleClickHeart() {
     this._buttonLike.classList.toggle("element__heart_active");
@@ -27,7 +24,7 @@ export class Card {
 
   _setEventListeners() {
     this._cardImage.addEventListener("click", () => {
-      this._handleCardClick()
+      this._handleCardClick();
     });
 
     this._element
@@ -35,7 +32,6 @@ export class Card {
       .addEventListener("click", () => {
         this._handleCardDelete();
       });
-
 
     this._buttonLike.addEventListener("click", () => {
       this._handleClickHeart();
@@ -53,7 +49,7 @@ export class Card {
     this._setEventListeners();
 
     // наполняем содержимым
-    
+
     this._cardImage.src = this.path;
     this._cardImage.alt = this.name;
     this._element.querySelector(".element__paragraph").textContent = this.name;
