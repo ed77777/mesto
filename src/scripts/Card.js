@@ -1,5 +1,6 @@
 export class Card {
   constructor(name, path, classSelector, handleCardClick) {
+    console.log(1);
     this.name = name;
     this.path = path;
     this.classSelector = classSelector;

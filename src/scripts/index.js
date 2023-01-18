@@ -11,8 +11,6 @@ import UserInfo from "./UserInfo";
 import {
   buttonEdit,
   buttonAddElement,
-  inputCardTitle,
-  inputCardDescription,
 } from "./globalМariables.js";
 
 const popupProfile = new PopupWithForm(
@@ -41,19 +39,22 @@ function openPopupCard() {
   mapForms.get("popupCard").resetValidation();
 }
 
-function handleProfileFormSubmit(evt) {
+function handleProfileFormSubmit(evt, answer) {
   evt.preventDefault();
-  const answer = popupProfile.getInputValues();
-  userInfo.setUserInfo(answer.get("UserName"), answer.get("Description"));
+  userInfo.setUserInfo(
+    answer["popup__input-title"],
+    answer["popup__input-description"]
+  );
   // clearError(evt.target);
   this.close();
 }
 
-function handleCardFormSubmit(evt) {
+function handleCardFormSubmit(evt, answer) {
   evt.preventDefault();
-  section._renderer(
-    createCard({ path: inputCardTitle.value, name: inputCardDescription.value })
-  );
+  section._renderer({
+    path: answer["popup-card__input-description"],
+    name: answer["popup-card__input-title"],
+  });
   this.close();
 }
 
@@ -61,17 +62,6 @@ buttonAddElement.addEventListener("click", openPopupCard);
 buttonEdit.addEventListener("click", openPopupProfile);
 
 const buttonsClose = document.querySelectorAll(".popup__close-icon");
-
-buttonsClose.forEach((button) => {
-  // находим 1 раз ближайший к крестику попап
-  const popup = button.closest(".popup");
-  // устанавливаем обработчик закрытия на крестик
-  popup.addEventListener("mousedown", (evt) => {
-    if (evt.target === button || evt.target === popup) {
-      // closePopup(popup);
-    }
-  });
-});
 
 const mapForms = new Map();
 
@@ -89,7 +79,6 @@ formElems.forEach((formElem) => {
 });
 
 function handleCardClick() {
-  // new PopupWithImage(this.path, this.name, ".popup-image").open();
   popupImage.setDate(this.path, this.name);
   popupImage.open();
 }
@@ -97,16 +86,6 @@ function handleCardClick() {
 function createCard(item) {
   return new Card(item.name, item.path, "#card", handleCardClick).createCard();
 }
-
-// const defaultCardList = new Section(
-//   {
-//     data: cards,
-//     renderer: (item) => {
-//       defaultCardList.addItem(createCard(item));
-//     },
-//   },
-//   ".elements"
-// );
 
 const section = new Section(
   {

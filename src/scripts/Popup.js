@@ -11,6 +11,7 @@ export default class Popup {
     });
     this.setEventListeners();
   }
+  
   close() {
     this._popupElement.classList.remove("popup_opened");
   }

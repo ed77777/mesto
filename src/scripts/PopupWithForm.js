@@ -13,18 +13,24 @@ export default class PopupWithForm extends Popup {
     inputDescriptionElem.value = description;
   }
 
-  getInputValues() {
-    const answer = new Map();
-    answer.set("UserName", inputUserNameElem.value);
-    answer.set("Description", inputDescriptionElem.value);
-    // return new Map() {inputUserNameElem.value,inputDescriptionElem.value}
+  _getInputValues() {
+
+    const answer = {};
+    Array.from(document.forms[this._formName].elements).forEach((element) => {
+      answer[element.name] = element.value;
+    });
+
+    // console.log(answer);
+    
     return answer;
   }
 
   setEventListeners() {
     super.setEventListeners();
     document.forms[this._formName].addEventListener("submit", (evt) => {
-      this._handleFormSubmit(evt);
+      this._handleFormSubmit(evt, this._getInputValues());
+      // const sadsa = this._getInputValues();
+      // this._handleFormSubmit(evt);
     });
   }
 }
