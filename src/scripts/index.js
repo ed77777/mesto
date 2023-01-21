@@ -29,7 +29,8 @@ const popupImage = new PopupWithImage(".popup-image");
 
 function openPopupProfile() {
   const userinfo2 = userInfo.getUserInfo();
-  popupProfile.setInputValues(userinfo2.name, userinfo2.info);
+  // popupProfile.setInputValues(userinfo2.name, userinfo2.info);ы
+  popupProfile.setInputValues({'popup__input-title': userinfo2.name, 'popup__input-description': userinfo2.info});
   popupProfile.open();
   mapForms.get("popupProfile").resetValidation();
 }

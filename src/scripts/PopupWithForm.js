@@ -6,27 +6,43 @@ export default class PopupWithForm extends Popup {
     super(classSelector);
     this._formName = formName;
     this._handleFormSubmit = handleFormSubmit;
+    this._fields = Array.from(document.forms[this._formName].elements);
+    super.setEventListeners();
+    this.setEventListeners();
+    this._arrayInputs = new Array;
+    this._arrayInputs.push(inputUserNameElem);
+    this._arrayInputs.push(inputDescriptionElem);
   }
 
-  setInputValues(title, description) {
-    inputUserNameElem.value = title;
-    inputDescriptionElem.value = description;
+  // setInputValues(title, description) {
+  //   inputUserNameElem.value = title;
+  //   inputDescriptionElem.value = description;
+  // }
+
+  close() {
+    super.close();
+    document.forms[this._formName].reset(); 
+  }
+
+
+  setInputValues(objectValues) {
+    this._arrayInputs.forEach(element => {
+      element.value = objectValues[element.name];
+    });
+    // inputUserNameElem.value = values['inputUserNameElem'];
+    // inputDescriptionElem.value = values['inputDescriptionElem'];
   }
 
   _getInputValues() {
-
     const answer = {};
-    Array.from(document.forms[this._formName].elements).forEach((element) => {
+    this._fields.forEach((element) => {
       answer[element.name] = element.value;
     });
-
-    // console.log(answer);
-    
     return answer;
   }
 
   setEventListeners() {
-    super.setEventListeners();
+    // super.setEventListeners();
     document.forms[this._formName].addEventListener("submit", (evt) => {
       this._handleFormSubmit(evt, this._getInputValues());
       // const sadsa = this._getInputValues();
