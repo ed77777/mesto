@@ -21,6 +21,7 @@ export class FormValidator {
   }
 
   resetValidation() {
+    // console.log(this);
     this._toggleButtonState();
     this._hideInputErrors();
   }

@@ -18,11 +18,13 @@
     <main>
       <section class="profile">
         <div class="profile__info-whraper">
-          <img
-            src="<%=require('./images/Jacques-Cousteau.png')%>"
-            alt="Жак Ив Кусто"
-            class="profile__image"
-          />
+          <div class="profile__conteiner">
+            <img
+              src="<%=require('./images/Jacques-Cousteau.png')%>"
+              alt="Жак Ив Кусто"
+              class="profile__image"
+            />
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button type="button" class="profile__button-edit"></button>
@@ -41,7 +43,6 @@
         <template id="card">
           <article class="element">
             <img
-              
               src="<%=require('./images/trashCan.svg')%>"
               alt="Корзина"
               class="element__trash-can"
@@ -49,7 +50,10 @@
             <img src="./images/1.png" alt="Карачаевск" class="element__img" />
             <div class="element__button">
               <h2 class="element__paragraph">Карачаевск</h2>
-              <button type="button" class="element__heart"></button>
+              <div class="element__like-container">
+                <button type="button" class="element__heart"></button>
+                <span class="element__counter-likes">5</span>
+              </div>
             </div>
           </article>
         </template>
@@ -145,6 +149,22 @@
         ></button>
         <img src="#" alt="" class="popup-image__image" />
         <p class="popup-image__description">sadsadsad</p>
+      </div>
+    </div>
+    <div class="popup popup-confirmation">
+      <div class="popup-confirmation__container">
+        <form
+          class="popup-confirm__form"
+          name="popup-confirmation__form"
+          novalidate
+        >
+          <button
+            type="button"
+            class="popup__close-icon popup-confirm__close-icon"
+          ></button>
+          <p class="popup-confirm__p">Вы уверены?</p>
+          <button type="submit" class="popup-confirm__button">Да</button>
+        </form>
       </div>
     </div>
     <!-- <script src="./scripts/index.js" type="module"></script> -->
