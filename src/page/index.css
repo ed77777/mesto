@@ -65,7 +65,7 @@
 
 @import url(../blocks/popup-confirmation/popup-confirmation.css);
 @import url(../blocks/popup-confirmation/__button/popup-confirmation__button.css);
-@import url(../blocks/popup-confirmation/__close-icon/popup-confirm__close-icon.css);
+@import url(../blocks/popup-confirmation/__close-icon/popup-confirmation__close-icon.css);
 @import url(../blocks/popup-confirmation/__container/popup-confirmation__container.css);
 @import url(../blocks/popup-confirmation/__p/popup-confirmation__p.css);
 
