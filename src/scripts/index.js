@@ -194,7 +194,7 @@ function handleUpdateAvatarFormSubmit(evt, answer) {
 
   promiseEditAvatar
     .then()
-    .catch(console.log("Ошибка"))
+    // .catch(console.log("Ошибка"))
     ;
 
 
