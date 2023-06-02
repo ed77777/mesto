@@ -2,7 +2,7 @@ import Popup from "./Popup.js";
 import { inputUserNameElem, inputDescriptionElem } from "./globalМariables.js";
 
 export default class PopupWithForm extends Popup {
-  constructor(classSelector, formName, handleFormSubmit) {
+  constructor(classSelector, formName, handleFormSubmit, classSelectorButtonSubmit) {
     super(classSelector);
     this._formName = formName;
     this._handleFormSubmit = handleFormSubmit;
@@ -12,6 +12,8 @@ export default class PopupWithForm extends Popup {
     this._arrayInputs = new Array;
     this._arrayInputs.push(inputUserNameElem);
     this._arrayInputs.push(inputDescriptionElem);
+    this._arrayInputs.push(inputDescriptionElem);
+    this.buttonSubmit = document.querySelector(classSelectorButtonSubmit);
   }
 
   // setInputValues(title, description) {

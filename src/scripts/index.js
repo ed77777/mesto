@@ -28,13 +28,15 @@ function handleConfirmationFormSubmit(evt) {
 const popupProfile = new PopupWithForm(
   ".popup-profile",
   "popup-profile__form",
-  handleProfileFormSubmit
+  handleCardFormSubmit,
+  '.popup-profile__button-save'
 );
 
 const popupNewCard = new PopupWithForm(
   ".popup-card",
   "popup-card__form",
-  handleCardFormSubmit
+  handleCardFormSubmit,
+  '.popup-card__button-save'
 );
 
 const popupImage = new PopupWithImage(".popup-image");
@@ -59,8 +61,11 @@ function handleProfileFormSubmit(evt, answer) {
   evt.preventDefault();
   userInfo.setUserInfo(
     answer["popup__input-title"],
-    answer["popup__input-description"]
+    answer["popup__input-description"],
+    userInfo["profileImage"].src
   );
+
+  this.buttonSubmit.innerText = "Сохранение...";
 
   const promiseEditUserInfo = api.editDataProfile(
     "users/me",
@@ -79,6 +84,9 @@ function handleProfileFormSubmit(evt, answer) {
 
 function handleCardFormSubmit(evt, answer) {
   evt.preventDefault();
+
+  this.buttonSubmit.innerText = "Сохранение...";
+  
   api
     .AddNewCard(
       "cards",
@@ -97,7 +105,7 @@ function handleCardFormSubmit(evt, answer) {
 buttonAddElement.addEventListener("click", openPopupCard);
 buttonEdit.addEventListener("click", openPopupProfile);
 
-const buttonsClose = document.querySelectorAll(".popup__close-icon");
+// const buttonsClose = document.querySelectorAll(".popup__close-icon");
 
 const mapForms = new Map();
 
@@ -156,7 +164,7 @@ export const userInfo = new UserInfo({
   classSelectorInfo: ".profile__description",
   classSelectorImage: ".profile__image",
   classSelectorImageEdit: ".profile__conteiner",
-  handleImageClick
+  handleImageClick,
 });
 
 api.getUserData("users/me").then((data) => {
@@ -168,11 +176,37 @@ api.getUserData("users/me").then((data) => {
   });
 });
 
-function handleImageClick() {
-  const popupProfile = new PopupWithForm(
-    ".popup-profile",
-    "popup-profile__form",
-    handleProfileFormSubmit
+function handleUpdateAvatarFormSubmit(evt, answer) {
+  evt.preventDefault();
+  userInfo.setUserInfo(
+    userInfo["profileTitleElem"].textContent,
+    userInfo["profileDescriptionElem"].textContent,
+    answer["popup__input-link"]
   );
-  popupProfile.open();
+
+  const promiseEditAvatar = api.editAvatar(
+    "users/me/avatar ",
+    answer["popup__input-link"]
+  );
+
+  // const button = document.querySelector('.popup-update-avatar__button');
+  this.buttonSubmit.innerText = "Сохранение...";
+
+  promiseEditAvatar
+    .then()
+    .catch(console.log("Ошибка"))
+    ;
+
+
+  this.close();
+}
+
+function handleImageClick() {
+  const popupUpdateAvatar = new PopupWithForm(
+    ".popup-update-avatar",
+    "popup-update-avatar",
+    handleUpdateAvatarFormSubmit,
+    '.popup-update-avatar__button'
+  );
+  popupUpdateAvatar.open();
 }

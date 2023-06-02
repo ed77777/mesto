@@ -1,0 +1,16 @@
+.popup-update-avatar__button {
+  width: 358px;
+  min-height: 50px;
+  margin-top: 48px;
+  margin-left: 36px;
+  color: white;
+  background-color: black;
+  padding: 0px;
+}
+
+/* @media screen and (max-width: 600px) {
+  .popup-update-avatar__button {
+    width: 238px;
+    margin-left: 22px;
+  }
+} */

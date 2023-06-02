@@ -15,23 +15,35 @@ export default class Api {
       .catch((res) => console.log(res));
   }
 
-  setLike(url) {
-    fetch(this.baseUrl + url, {
-      method: "PUT",
-      headers: this.headers,
-    }).then((res) => {
-      if (res.ok) console.log(res);
-    });
-  }
+  // setLike(url) {
+  //   console.log('set like');
+  //   return fetch(this.baseUrl + url, {
+  //     method: "PUT",
+  //     headers: this.headers,
+  //   }).then((res) => {
+  //     // if (res.ok) console.log(res);
+  //     if (res.ok) return res.json();
+  //   });
+  // }
 
-  deleteLike(url) {
+  setDeleteLike(url,methodName) {
     return fetch(this.baseUrl + url, {
-      method: "DELETE",
+      method: methodName,
       headers: this.headers,
     }).then((res) => {
       if (res.ok) return res.json();
     });
   }
+
+  // deleteLike(url) {
+  //   console.log('delete like');
+  //   return fetch(this.baseUrl + url, {
+  //     method: "DELETE",
+  //     headers: this.headers,
+  //   }).then((res) => {
+  //     if (res.ok) return res.json();
+  //   });
+  // }
 
   getInitialCards(url) {
     return fetch(this.baseUrl + "/" + url, {
@@ -60,6 +72,16 @@ export default class Api {
       body: JSON.stringify({
         name: name,
         about: about,
+      }),
+    });
+  }
+
+  editAvatar(url, avatar) {
+    return fetch(this.baseUrl + "/" + url, {
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar: avatar
       }),
     });
   }

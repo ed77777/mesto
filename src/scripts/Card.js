@@ -42,18 +42,27 @@ export class Card {
 
   _handleClickHeart() {
     this._buttonLike.classList.toggle("element__heart_active");
+
+    let methodName = 'PUT';
+
     if (this._buttonLike.classList.contains("element__heart_active")) {
-      api.setLike("cards/" + this.item._id + "/likes").then(res=>{this._counterLikes.textContent = res.likes.length;});
+      // api.setLike("cards/" + this.item._id + "/likes").then((res) => {
+      //   this._counterLikes.textContent = res.likes.length;
+      // });
+      methodName = 'PUT';
     }
-    // else {api.deleteLike("cards/" + this.item._id + "/likes").then(alert);}
-    // else {api.deleteLike("cards/" + this.item._id + "/likes").then(res=>console.log(res));}
     else {
-      api.deleteLike("cards/" + this.item._id + "/likes").then((res) => {
-
-        this._counterLikes.textContent = res.likes.length;
-
-      });
+      // api.setDeleteLike("cards/" + this.item._id + "/likes",).then((res) => {
+      //   this._counterLikes.textContent = res.likes.length;
+      // });
+      methodName = 'DELETE';
     }
+
+    api.setDeleteLike("cards/" + this.item._id + "/likes",methodName).then((res) => {
+      this._counterLikes.textContent = res.likes.length;
+    });
+
+
   }
 
   _setEventListeners() {

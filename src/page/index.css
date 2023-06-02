@@ -69,11 +69,21 @@
 @import url(../blocks/popup-confirmation/__container/popup-confirmation__container.css);
 @import url(../blocks/popup-confirmation/__p/popup-confirmation__p.css);
 
+@import url(../blocks/popup-update-avatar/popup-update-avatar.css);
+@import url(../blocks/popup-update-avatar/__container/popup-update-avatar__container.css);
+@import url(../blocks/popup-update-avatar/__close-icon/popup-update-avatar__close-icon.css);
+@import url(../blocks/popup-update-avatar/__p/popup-update-avatar__p.css);
+@import url(../blocks/popup-update-avatar/__button/popup-update-avatar__button.css);
+@import url(../blocks/popup-update-avatar/__input/popup-update-avatar__input.css);
+
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__button/__button_disabled/popup__button_disabled.css);
 @import url(../blocks/popup/__input/_type_error/popup__input_type_error.css);
 
 @import url(../blocks/element/__counter-like/element__counter-likes.css);
+
+
+
 
 
 
