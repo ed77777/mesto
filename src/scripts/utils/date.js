@@ -1,11 +1,11 @@
 // теперь картинки можно импортировать,
 // вебпак добавит в переменные правильные пути
-const img1 = new URL("../images/1.png", import.meta.url);
-const img2 = new URL("../images/2.png", import.meta.url);
-const img3 = new URL("../images/3.png", import.meta.url);
-const img4 = new URL("../images/4.png", import.meta.url);
-const img5 = new URL("../images/5.png", import.meta.url);
-const img6 = new URL("../images/6.png", import.meta.url);
+const img1 = new URL("../../images/1.png", import.meta.url);
+const img2 = new URL("../../images/2.png", import.meta.url);
+const img3 = new URL("../../images/3.png", import.meta.url);
+const img4 = new URL("../../images/4.png", import.meta.url);
+const img5 = new URL("../../images/5.png", import.meta.url);
+const img6 = new URL("../../images/6.png", import.meta.url);
 
 
 // const cards = [

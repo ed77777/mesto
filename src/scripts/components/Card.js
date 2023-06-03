@@ -1,5 +1,5 @@
-import { userInfo } from "./index.js";
-import { api } from "./index.js";
+import { userInfo } from "../../pages/index.js";
+// import { api } from "./index.js";
 
 export class Card {
   constructor(
@@ -8,8 +8,9 @@ export class Card {
     classSelector,
     handleCardClick,
     item,
-    popupConfirmation,
-    handleDeleteCard
+    // popupConfirmation,
+    handleDeleteCard,
+    handleLikeCard
   ) {
     // console.log(1);
     this.name = name;
@@ -18,8 +19,9 @@ export class Card {
     this._handleCardClick = handleCardClick;
     this.item = item;
     // this._id = item._id;
-    this._popupConfirmation = popupConfirmation;
+    // this._popupConfirmation = popupConfirmation;
     this._handleDeleteCard = handleDeleteCard;
+    this._handleLikeCard = handleLikeCard;
   }
 
   _getTemplate() {
@@ -29,41 +31,45 @@ export class Card {
       .cloneNode(true);
   }
 
-  _handleCardDelete() {
+  // _handleCardDelete() {
     // a = document.querySelector('.popup-confirmation');
-    this._popupConfirmation.cardId = this.item._id;
-    this._popupConfirmation.open();
+    // this._popupConfirmation.cardId = this.item._id;
+    // this._popupConfirmation.element = this._element;
+    // this._popupConfirmation.open();
     // this._popupConfirmation._handleDeleteCard = (()=>this._handleDeleteCard(this.item._id))
     // this._handleDeleteCard(this.item._id);
-
     // this._element.remove();
     // this._element = null;
+  // }
+
+  // _handleClickHeart() {
+  //   this._buttonLike.classList.toggle("element__heart_active");
+
+  //   let methodName;
+
+  //   if (this._buttonLike.classList.contains("element__heart_active")) {
+  //     // api.setLike("cards/" + this.item._id + "/likes").then((res) => {
+  //     //   this._counterLikes.textContent = res.likes.length;
+  //     // });
+  //     methodName = "PUT";
+  //   } else {
+  //     // api.setDeleteLike("cards/" + this.item._id + "/likes",).then((res) => {
+  //     //   this._counterLikes.textContent = res.likes.length;
+  //     // });
+  //     methodName = "DELETE";
+  //   }
+
+  //   api
+  //     .setDeleteLike("cards/" + this.item._id + "/likes", methodName)
+  //     .then((res) => {
+  //       this._counterLikes.textContent = res.likes.length;
+  //     });
+  // }
+
+  updateLikes(likes) {
+    this._counterLikes.textContent = likes;
   }
 
-  _handleClickHeart() {
-    this._buttonLike.classList.toggle("element__heart_active");
-
-    let methodName = 'PUT';
-
-    if (this._buttonLike.classList.contains("element__heart_active")) {
-      // api.setLike("cards/" + this.item._id + "/likes").then((res) => {
-      //   this._counterLikes.textContent = res.likes.length;
-      // });
-      methodName = 'PUT';
-    }
-    else {
-      // api.setDeleteLike("cards/" + this.item._id + "/likes",).then((res) => {
-      //   this._counterLikes.textContent = res.likes.length;
-      // });
-      methodName = 'DELETE';
-    }
-
-    api.setDeleteLike("cards/" + this.item._id + "/likes",methodName).then((res) => {
-      this._counterLikes.textContent = res.likes.length;
-    });
-
-
-  }
 
   _setEventListeners() {
     this._cardImage.addEventListener("click", () => {
@@ -71,11 +77,13 @@ export class Card {
     });
 
     this._buttonTrash.addEventListener("click", () => {
-      this._handleCardDelete();
+      // this._handleCardDelete();
+      this._handleDeleteCard();
     });
 
     this._buttonLike.addEventListener("click", () => {
-      this._handleClickHeart();
+      // this._handleClickHeart();
+      this._handleLikeCard();
     });
   }
 

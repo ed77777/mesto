@@ -7,12 +7,12 @@ export class Section {
 
   renderItems() {
     // this.clear();
-    this._renderedItems.forEach(item => {
+    this._renderedItems.forEach((item) => {
       this._renderer(item);
     });
   }
 
-  addItem(item,pos="start") {
+  addItem(item, pos = "start") {
     // this._container.prepend(item);
     if (pos === "start") {
       this._container.prepend(item);

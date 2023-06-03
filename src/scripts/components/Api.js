@@ -5,45 +5,27 @@ export default class Api {
   }
 
   deleteCard(url, id) {
-    fetch(this.baseUrl + url + "/" + id, {
+    return fetch(this.baseUrl + url + "/" + id, {
       method: "DELETE",
       headers: this.headers,
-    })
-      .then((res) => {
-        if (res.ok) console.log(res);
-      })
-      .catch((res) => console.log(res));
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
   }
 
-  // setLike(url) {
-  //   console.log('set like');
-  //   return fetch(this.baseUrl + url, {
-  //     method: "PUT",
-  //     headers: this.headers,
-  //   }).then((res) => {
-  //     // if (res.ok) console.log(res);
-  //     if (res.ok) return res.json();
-  //   });
-  // }
 
-  setDeleteLike(url,methodName) {
+  setDeleteLike(url, methodName) {
     return fetch(this.baseUrl + url, {
       method: methodName,
       headers: this.headers,
     }).then((res) => {
       if (res.ok) return res.json();
+      return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
-
-  // deleteLike(url) {
-  //   console.log('delete like');
-  //   return fetch(this.baseUrl + url, {
-  //     method: "DELETE",
-  //     headers: this.headers,
-  //   }).then((res) => {
-  //     if (res.ok) return res.json();
-  //   });
-  // }
 
   getInitialCards(url) {
     return fetch(this.baseUrl + "/" + url, {
@@ -52,6 +34,7 @@ export default class Api {
       if (res.ok) {
         return res.json();
       }
+      return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
 
@@ -62,6 +45,7 @@ export default class Api {
       if (res.ok) {
         return res.json();
       }
+      return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
 
@@ -73,6 +57,11 @@ export default class Api {
         name: name,
         about: about,
       }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
 
@@ -81,8 +70,13 @@ export default class Api {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({
-        avatar: avatar
+        avatar: avatar,
       }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
 
@@ -98,6 +92,7 @@ export default class Api {
       if (res.ok) {
         return res.json();
       }
+      return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
 }
