@@ -9,14 +9,14 @@ export default class PopupWithImage extends Popup {
     );
   }
 
-  setDate(path, name) {
-    this.path = path;
-    this.name = name;
-  }
+  // setDate(path, name) {
+  //   this.path = path;
+  //   this.name = name;
+  // }
 
-  open() {
-    this.popupImgImage.src = this.path;
-    this.popupImgImage.alt = this.name;
+  open(path, name) {
+    this.popupImgImage.src = path;
+    this.popupImgImage.alt = name;
     this.popupImgDescription.textContent = this.name;
     super.open();
   }

@@ -80,7 +80,7 @@ export default class Api {
     });
   }
 
-  AddNewCard(url, name, link) {
+  addNewCard(url, name, link) {
     return fetch(this.baseUrl + "/" + url, {
       method: "POST",
       headers: this.headers,

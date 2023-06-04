@@ -75,6 +75,7 @@
 @import url(../blocks/popup-update-avatar/__p/popup-update-avatar__p.css);
 @import url(../blocks/popup-update-avatar/__button/popup-update-avatar__button.css);
 @import url(../blocks/popup-update-avatar/__input/popup-update-avatar__input.css);
+@import url(../blocks/popup-update-avatar/__input-error/popup-update-avatar__input-title-error.css);
 
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__button/__button_disabled/popup__button_disabled.css);

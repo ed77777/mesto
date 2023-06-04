@@ -1,6 +1,9 @@
 import "./index.css"; // добавьте импорт главного файла стилей
 
-import { inputUserNameElem, inputDescriptionElem } from "../scripts/utils/globalVariables";
+import {
+  inputUserNameElem,
+  inputDescriptionElem,
+} from "../scripts/utils/globalVariables";
 import { Section } from "../scripts/components/Section.js";
 import { cards } from "../scripts/utils/date.js";
 import { Card } from "../scripts/components/Card.js";
@@ -31,13 +34,14 @@ function handleConfirmationFormSubmit(evt) {
   api
     .deleteCard("cards", this.cardId)
     .then(() => {
-      this.element.remove();
-      this.element = null;
+      // this.element.remove();
+      // this.element = null;
+      this.item.deleteElementCard();
+      popupConfirmation.close();
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
     });
-  this.close();
 }
 
 const popupProfile = new PopupWithForm(
@@ -66,7 +70,6 @@ function openPopupProfile() {
 
   inputUserNameElem.value = userinfo2.name;
   inputDescriptionElem.value = userinfo2.info;
-  
 
   popupProfile.open();
   mapForms.get("popupProfile").resetValidation();
@@ -90,12 +93,11 @@ function handleProfileFormSubmit(evt, answer) {
     )
     .then((data) => {
       userInfo.setUserInfo(data.name, data.about, data.avatar);
+      popupProfile.close();
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
     });
-
-  this.close();
 }
 
 function handleCardFormSubmit(evt, answer) {
@@ -111,17 +113,15 @@ function handleCardFormSubmit(evt, answer) {
     )
     .then((data) => {
       section._renderer(data);
+      popupNewCard.close();
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
     });
-  this.close();
 }
 
 buttonAddElement.addEventListener("click", openPopupCard);
 buttonEdit.addEventListener("click", openPopupProfile);
-
-// const buttonsClose = document.querySelectorAll(".popup__close-icon");
 
 const mapForms = new Map();
 
@@ -139,13 +139,14 @@ formElems.forEach((formElem) => {
 });
 
 function handleCardClick() {
-  popupImage.setDate(this.path, this.name);
-  popupImage.open();
+  // popupImage.setDate(this.path, this.name);
+  popupImage.open(this.path, this.name);
 }
 
 function handleCardDelete() {
   popupConfirmation.cardId = this.item._id;
   popupConfirmation.element = this._element;
+  popupConfirmation.item = this;
 
   popupConfirmation.open();
 }
@@ -171,7 +172,8 @@ function createCard(item) {
         .then((res) => {
           // console.log(`addLike ---`, res);
           // card.updateLikes(res.likes)
-          card._buttonLike.classList.toggle("element__heart_active");
+          card.toggleLikes();
+          // card._buttonLike.classList.toggle("element__heart_active");
           card.updateLikes(res.likes.length);
           // console.log(res.likes.length);
         })
@@ -180,6 +182,10 @@ function createCard(item) {
         });
     }
   );
+
+  // card.test();
+  // card.deleteElementCard();
+
   return card.createCard();
 }
 
@@ -235,10 +241,11 @@ function handleUpdateAvatarFormSubmit(evt, answer) {
     .editAvatar("users/me/avatar ", answer["popup__input-link"])
     .then((data) => {
       userInfo.setUserInfo(data.name, data.about, data.avatar);
-    }).catch((err) => {
+    })
+    .catch((err) => {
       console.log(err); // выведем ошибку в консоль
     });
-  this.close();
+    popupUpdateAvatar.close();
 }
 
 const popupUpdateAvatar = new PopupWithForm(

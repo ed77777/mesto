@@ -169,7 +169,7 @@
     <div class="popup popup-update-avatar">
       <div class="popup-update-avatar__container">
         <form
-          class="popup-update-avatar-form"
+          class="popup__form popup-update-avatar-form"
           name="popup-update-avatar"
           novalidate
         >
@@ -180,13 +180,12 @@
           <p class="popup-update-avatar__p">Обновить аватар?</p>
           <input
             name="popup__input-link"
-            type="text"
+            type="url"
             class="popup-update-avatar__input popup__input"
-            minlength="2"
-            maxlength="100"
             required
-          />      
-          <button type="submit" class="popup-update-avatar__button">Да</button>
+          />    
+          <span class="popup__input-link-error popup-update-avatar__input-title-error popup__error"></span>  
+          <button type="submit" class="popup-update-avatar__button popup__button">Да</button>
         </form>
       </div>
     </div>
