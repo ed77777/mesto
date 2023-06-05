@@ -29,14 +29,17 @@ const popupConfirmation = new PopupConfirmation(
   handleConfirmationFormSubmit
 );
 
-function handleConfirmationFormSubmit(evt) {
+function handleConfirmationFormSubmit(evt,card) {
   evt.preventDefault();
+
+  // console.log(card);
+
   api
     .deleteCard("cards", this.cardId)
     .then(() => {
       // this.element.remove();
       // this.element = null;
-      this.item.deleteElementCard();
+      card.deleteElementCard();
       popupConfirmation.close();
     })
     .catch((err) => {
@@ -97,7 +100,7 @@ function handleProfileFormSubmit(evt, answer) {
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
-    });
+    }).finally(()=>{this.buttonSubmit.innerText = "Сохранить"});
 }
 
 function handleCardFormSubmit(evt, answer) {
@@ -106,18 +109,21 @@ function handleCardFormSubmit(evt, answer) {
   this.buttonSubmit.innerText = "Сохранение...";
 
   api
-    .AddNewCard(
+    .addNewCard(
       "cards",
       answer["popup-card__input-title"],
       answer["popup-card__input-description"]
     )
     .then((data) => {
-      section._renderer(data);
+      section.addItem(createCard(data));
       popupNewCard.close();
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
-    });
+    })
+    .finally(() => {
+      this.buttonSubmit.innerText = "Сохранить";
+    }).finally(()=>{this.buttonSubmit.innerText = "Сохранить"});
 }
 
 buttonAddElement.addEventListener("click", openPopupCard);

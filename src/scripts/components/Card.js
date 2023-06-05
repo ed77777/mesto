@@ -122,7 +122,7 @@ export class Card {
       }
     });
     if (this.item.owner._id != userInfo.id) {
-      // this._buttonTrash.classList.add("element__trash-can-invisible");
+      this._buttonTrash.classList.add("element__trash-can-invisible");
     }
     this._element.querySelector(".element__paragraph").textContent = this.name;
 

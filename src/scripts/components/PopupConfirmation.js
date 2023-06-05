@@ -16,9 +16,13 @@ export default class PopupConfirmation extends Popup {
     this._callback = callback;
   }
 
+  _getDate() {
+    return this.item;
+  }
+
   setEventListeners() {
     document.forms[this._formName].addEventListener("submit", (evt) => {
-      this._handleFormSubmit(evt);
+      this._handleFormSubmit(evt,this._getDate());
       // this._callback();
     });
   }

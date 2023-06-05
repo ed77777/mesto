@@ -7,9 +7,16 @@ export class Section {
 
   renderItems() {
     // this.clear();
-    this._renderedItems.forEach((item) => {
-      this._renderer(item);
-    });
+    // this._renderedItems.forEach((item) => {
+    //   this._renderer(item);
+    // });
+
+    const array = this._renderedItems;
+
+    for (let index = array.length - 1; index > -1; index--) {
+      // console.log(1);
+      this._renderer(array[index]);
+    }
   }
 
   addItem(item, pos = "start") {
