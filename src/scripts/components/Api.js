@@ -5,6 +5,9 @@ export default class Api {
   }
 
   deleteCard(url, id) {
+
+    // return Promise.resolve();
+
     return fetch(this.baseUrl + url + "/" + id, {
       method: "DELETE",
       headers: this.headers,

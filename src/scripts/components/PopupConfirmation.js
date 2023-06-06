@@ -21,6 +21,7 @@ export default class PopupConfirmation extends Popup {
   }
 
   setEventListeners() {
+    super.setEventListeners();
     document.forms[this._formName].addEventListener("submit", (evt) => {
       this._handleFormSubmit(evt,this._getDate());
       // this._callback();

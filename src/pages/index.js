@@ -29,7 +29,7 @@ const popupConfirmation = new PopupConfirmation(
   handleConfirmationFormSubmit
 );
 
-function handleConfirmationFormSubmit(evt,card) {
+function handleConfirmationFormSubmit(evt, card) {
   evt.preventDefault();
 
   // console.log(card);
@@ -100,7 +100,10 @@ function handleProfileFormSubmit(evt, answer) {
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
-    }).finally(()=>{this.buttonSubmit.innerText = "Сохранить"});
+    })
+    .finally(() => {
+      this.buttonSubmit.innerText = "Сохранить";
+    });
 }
 
 function handleCardFormSubmit(evt, answer) {
@@ -123,7 +126,7 @@ function handleCardFormSubmit(evt, answer) {
     })
     .finally(() => {
       this.buttonSubmit.innerText = "Сохранить";
-    }).finally(()=>{this.buttonSubmit.innerText = "Сохранить"});
+    });
 }
 
 buttonAddElement.addEventListener("click", openPopupCard);
@@ -144,27 +147,33 @@ formElems.forEach((formElem) => {
   }
 });
 
-function handleCardClick() {
-  // popupImage.setDate(this.path, this.name);
-  popupImage.open(this.path, this.name);
-}
+// function handleCardClick() {
+//   // popupImage.setDate(this.path, this.name);
+//   popupImage.open(this.path, this.name);
+// }
 
-function handleCardDelete() {
-  popupConfirmation.cardId = this.item._id;
-  popupConfirmation.element = this._element;
-  popupConfirmation.item = this;
+// function handleCardDelete() {
+//   popupConfirmation.cardId = this.item._id;
+//   popupConfirmation.element = this._element;
+//   popupConfirmation.item = this;
 
-  popupConfirmation.open();
-}
+//   popupConfirmation.open();
+// }
 
 function createCard(item) {
   const card = new Card(
     item.name,
     item.link,
     "#card",
-    handleCardClick,
+    ()=>{popupImage.open(card.path, card.name)},
     item,
-    handleCardDelete,
+    // handleCardDelete,
+    () => {
+      popupConfirmation.cardId = card.item._id;
+      popupConfirmation.element = card._element;
+      popupConfirmation.item = card;
+      popupConfirmation.open();
+    },
 
     () => {
       let methodName;
@@ -250,8 +259,11 @@ function handleUpdateAvatarFormSubmit(evt, answer) {
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
+    })
+    .finally(() => {
+      this.buttonSubmit.innerText = "Да";
     });
-    popupUpdateAvatar.close();
+  popupUpdateAvatar.close();
 }
 
 const popupUpdateAvatar = new PopupWithForm(
