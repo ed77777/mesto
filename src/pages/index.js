@@ -201,7 +201,7 @@ function createCard(item) {
   // card.test();
   // card.deleteElementCard();
 
-  return card.createCard();
+  return card.createCard(userInfo.id);
 }
 
 const section = new Section(
@@ -255,7 +255,7 @@ function handleUpdateAvatarFormSubmit(evt, answer) {
   const promiseEditAvatar = api
     .editAvatar("users/me/avatar ", answer["popup__input-link"])
     .then((data) => {
-      userInfo.setUserInfo(data.name, data.about, data.avatar);
+      userInfo.setUserInfo(data.name, data.about, data.avatar, data._id);
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль

@@ -1,4 +1,4 @@
-import { userInfo } from "../../pages/index.js";
+// import { userInfo } from "../../pages/index.js";
 // import { api } from "./index.js";
 
 export class Card {
@@ -99,7 +99,10 @@ export class Card {
     });
   }
 
-  createCard() {
+  createCard(userId) {
+
+    // console.log(userId);
+
     // клонируем содержимое тега template
     this._element = this._getTemplate();
     this._buttonLike = this._element.querySelector(".element__heart");
@@ -117,11 +120,11 @@ export class Card {
     this._cardImage.alt = this.name;
     this._counterLikes.textContent = this.item.likes.length;
     this.item.likes.forEach((element) => {
-      if ((element._id = userInfo.id)) {
+      if ((element._id == userId)) {
         this._buttonLike.classList.add("element__heart_active");
       }
     });
-    if (this.item.owner._id != userInfo.id) {
+    if (this.item.owner._id != userId) {
       this._buttonTrash.classList.add("element__trash-can-invisible");
     }
     this._element.querySelector(".element__paragraph").textContent = this.name;
