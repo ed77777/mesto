@@ -95,7 +95,7 @@ function handleProfileFormSubmit(evt, answer) {
       answer["popup__input-description"]
     )
     .then((data) => {
-      userInfo.setUserInfo(data.name, data.about, data.avatar);
+      userInfo.setUserInfo(data.name, data.about, data.avatar,data._id);
       popupProfile.close();
     })
     .catch((err) => {
